@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Navbar from "../../Root/Header/Navbar";
 import { Link } from "react-router-dom";
-import { FaEye, FaEyeSlash} from "react-icons/fa";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
 
 const Login = () => {
@@ -16,10 +16,16 @@ const Login = () => {
         setTerms('');
         setPasswordError('');
         console.log(name, email, password, termsConditions);
+
+
+
+        if (!termsConditions) {
+            return setTerms("Please select terms and conditions")
+        }
     }
     return (
         <div>
-            <div className='bg-[#f3f3f3] text-black pb-12'>
+            <div className='bg-[#f6f8fa] text-black pb-12'>
                 <Navbar></Navbar>
                 <div className=" w-full lg:w-[580px] mx-auto mt-12 bg-white pb-5">
                     <form onSubmit={handleLogin} className="space-y-8 p-5 border">
@@ -39,6 +45,7 @@ const Login = () => {
                                 }
                             </span>
                         </div>
+                        <p className='text-red-500 font-medium m-0'>{passwordError}</p>
                         <div className="flex items-center justify-between">
                             <span className="flex gap-3">
                                 <input type="checkbox" name='checkbox' className=" w-5 h-5 cursor-pointer" />

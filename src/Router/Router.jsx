@@ -5,6 +5,7 @@ import Login from '../components/Login/Login';
 import MainLayout from '../Root/mainLayout/MainLayout';
 import Root from '../Root/Root';
 import Resister from '../components/Resister/Resister';
+import AddProduct from '../components/pages/AddProduct';
 
 
 
@@ -25,6 +26,10 @@ const Router = createBrowserRouter([
             {
                 path:'/resister',
                 element:<Resister></Resister>
+            },
+            {
+                path:'/addProduct',
+                element:<AddProduct></AddProduct>
             }
         ]
     }
