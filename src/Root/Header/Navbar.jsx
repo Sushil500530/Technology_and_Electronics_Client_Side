@@ -10,7 +10,7 @@ const Navbar = () => {
     </>
     return (
         <div>
-            <div className="navbar bg-base-100">
+            <div className="navbar bg-transparent">
                 <div className="navbar-start">
                     <div className="dropdown">
                         <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -21,8 +21,8 @@ const Navbar = () => {
                         </ul>
                     </div>
                     <Link to="/">
-                        <div className="w-40 h-20 cursor-pointer">
-                            <img className="w-full h-full" src="https://i.ibb.co/fDLgwc6/e9cbb26a7f5495c98439335fafdfae6b.jpg" alt="logo" />
+                        <div className="w-40 h-20 cursor-pointer hidden md:block lg:block">
+                            <img className="w-full h-full" src="https://i.ibb.co/qrzzM30/png-transparent-logo-technology-letter-font-technology-blue-electronics-text-thumbnail.png" alt="logo" />
                         </div>
                     </Link>
                 </div>
