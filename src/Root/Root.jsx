@@ -1,13 +1,15 @@
 
 import Navbar from "./Header/Navbar";
 import Footer from "../components/Footer/Footer";
+import Category from "../components/Category/SingleCategory/Category";
+import Communication from "../components/otherCategory/communication/Communication";
 
 
 
 const Root = () => {
     return (
         <div className="w-full">
-            <div className=" w-full relative bg-[url('https://i.ibb.co/t4KPQ7f/digital-connecting-banner-technology-polygon-background.jpg')] bg-cover bg-no-repeat">
+            <div className=" w-full pb-10 lg:h-[750px] md:pb-36 h-full relative bg-[url('https://i.ibb.co/t4KPQ7f/digital-connecting-banner-technology-polygon-background.jpg')] bg-cover bg-center bg-no-repeat">
                 <div className="container mx-auto text-white">
                     <Navbar></Navbar>
                 </div>
@@ -23,9 +25,10 @@ const Root = () => {
 
             </div>
             {/* category  section */}
-                <div className="w-full h-screen">
-                  
+                <div className="w-full">
+                  <Category></Category>
                 </div>
+                <Communication></Communication>
                    {/* footer  */}
                <div className="bg-gray-500">
                <Footer />
