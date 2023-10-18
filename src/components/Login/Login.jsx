@@ -1,31 +1,49 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import Navbar from "../../Root/Header/Navbar";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
+import { AuthContex } from "../../provider/AuthProvider";
+import { ToastContainer, toast } from "react-toastify";
+
 
 const Login = () => {
+    const { loginUser } = useContext(AuthContex);
+    const navigate = useNavigate();
     const [terms, setTerms] = useState('');
     const [passwordError, setPasswordError] = useState('');
     const [showPassword, setShowPassword] = useState(false);
     const handleLogin = e => {
         e.preventDefault();
-        const email = e.target.email.value;
-        const password = e.target.password.value;
-        const termsConditions = e.target.checkbox.checked;
+        const form = e.target;
+        const email = form.email.value;
+        const password = form.password.value;
+        const termsConditions = form.checkbox.checked;
         setTerms('');
         setPasswordError('');
-        console.log(name, email, password, termsConditions);
-
-
-
+        console.log( email, password, termsConditions);
         if (!termsConditions) {
             return setTerms("Please select terms and conditions")
         }
+
+        loginUser(email, password)
+            .then(result => {
+                if (result.user) {
+                    toast.success('log in successfully...!', {
+                        position: toast.POSITION.TOP_CENTER
+                    })
+                  return setTimeout(() => {
+                        navigate(location?.state ? location.state : "/")
+                    }, 1000)
+                }
+            })
+            .catch(() => {
+                setPasswordError("Password doesn't match")
+            })
     }
     return (
-        <div>
-            <div className='bg-[#f6f8fa] text-black pb-12'>
+        <div className="bg-[#f6f8fa] text-black pb-12">
+            <div className='container mx-auto'>
                 <Navbar></Navbar>
                 <div className=" w-full lg:w-[580px] mx-auto mt-12 bg-white pb-5">
                     <form onSubmit={handleLogin} className="space-y-8 p-5 border">
@@ -67,6 +85,7 @@ const Login = () => {
                             <h2 className="text-[18px] font-semibold">Continue With Google</h2>
                         </div>
                     </div>
+                    <ToastContainer />
                 </div>
             </div>
         </div>

@@ -1,20 +1,25 @@
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import Navbar from "../../Root/Header/Navbar";
-import { useState } from "react";
-import { Link } from "react-router-dom";
-
+import { useContext, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { AuthContex } from "../../provider/AuthProvider";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { updateProfile } from "firebase/auth";
 
 const Resister = () => {
+    const { createUser } = useContext(AuthContex);
+    const navigate = useNavigate();
     const [passwordError, setPasswordError] = useState('');
     const [showPassword, setShowPassword] = useState(false);
     const handleResister = e => {
         e.preventDefault();
-        const email = e.target.email.value;
-        const password = e.target.password.value;
+        const form = e.target;
+        const name = form.name.value;
+        const email = form.email.value;
+        const password = form.password.value;
         setPasswordError('');
         console.log(name, email, password,);
-
-
 
         if (password.length < 6) {
             return setPasswordError("password should be at least 6 character or longer")
@@ -22,17 +27,39 @@ const Resister = () => {
         else if (!/[A-Z]/.test(password)) {
             return setPasswordError('your password should have at least one uppercase characters.')
         }
-
         // eslint-disable-next-line no-useless-escape
         else if (!/[!@#$%^&*()_+{}\[\]:;<>,.?~\\|\-]/.test(password)) {
             return setPasswordError("you should be at least one special character")
         }
 
+        createUser(email, password)
+            .then(result => {
+                console.log(result.user);
+                if (result.user) {
+                    toast.success('Create successfully...!', {
+                        position: toast.POSITION.TOP_CENTER
+                    })
+                    updateProfile(result.user, {
+                        displayName: name,
+                        photoURL: "https://i.ibb.co/Jt0tPSh/user.png"
+                    })
+                        .then(() => {
+                            setTimeout(() => {
+                                return navigate('/login')
+                            },1000)
+                        })
+                        .catch(error => console.error(error))
+                }
+                
+            })
+            .catch(() => {
+                setPasswordError("Already Use In! Please Try Another Email Account");
+            })
 
     }
     return (
-        <div>
-            <div className='bg-[#f6f8fa] text-black pb-12'>
+        <div className="bg-[#f6f8fa] w-full h-screen text-black pb-12">
+            <div className='container mx-auto'>
                 <Navbar></Navbar>
                 <div className=" w-full lg:w-[580px] mx-auto mt-12 bg-white pb-5">
                     <form onSubmit={handleResister} className="space-y-8 p-5">
@@ -59,6 +86,7 @@ const Resister = () => {
                         <button className="btn bg-blue-600 text-white hover:text-black text-[18px] w-full capitalize font-semibold">Resister</button>
                         <h2 className="font-bold text-center">Already Have an Account? <Link to='/login' className="text-blue-600 hover:underline ">Please Login</Link></h2>
                     </form>
+                    <ToastContainer />
                 </div>
             </div>
         </div>
