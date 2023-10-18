@@ -8,7 +8,7 @@ import { ToastContainer, toast } from "react-toastify";
 
 
 const Login = () => {
-    const { loginUser } = useContext(AuthContex);
+    const { loginUser, googleSignIn } = useContext(AuthContex);
     const navigate = useNavigate();
     const [terms, setTerms] = useState('');
     const [passwordError, setPasswordError] = useState('');
@@ -21,7 +21,7 @@ const Login = () => {
         const termsConditions = form.checkbox.checked;
         setTerms('');
         setPasswordError('');
-        console.log( email, password, termsConditions);
+        console.log(email, password, termsConditions);
         if (!termsConditions) {
             return setTerms("Please select terms and conditions")
         }
@@ -32,7 +32,7 @@ const Login = () => {
                     toast.success('log in successfully...!', {
                         position: toast.POSITION.TOP_CENTER
                     })
-                  return setTimeout(() => {
+                    return setTimeout(() => {
                         navigate(location?.state ? location.state : "/")
                     }, 1000)
                 }
@@ -41,6 +41,23 @@ const Login = () => {
                 setPasswordError("Password doesn't match")
             })
     }
+    const handleGoogleSignIn = () => {
+        googleSignIn()
+            .then(result => {
+                if (result.user) {
+                    toast.success('log in successfully...!', {
+                        position: toast.POSITION.TOP_CENTER
+                    })
+                    return setTimeout(() => {
+                        navigate(location?.state ? location.state : "/")
+                    }, 1000)
+                }
+            })
+            .catch(error => {
+                console.error(error);
+            })
+    }
+
     return (
         <div className="bg-[#f6f8fa] text-black pb-12">
             <div className='container mx-auto'>
@@ -79,7 +96,7 @@ const Login = () => {
                         <hr className="w-64 h-px my-8 bg-gray-400 border-0 dark:bg-black" />
                         <span className="absolute px-3 font-medium text-black -translate-x-1/2 bg-white left-1/2 dark:text-white dark:bg-black">Or</span>
                     </div>
-                    <div className='w-full md:w-[466px] lg:w-full mx-auto p-5'>
+                    <div onClick={handleGoogleSignIn} className='w-full md:w-[466px] lg:w-full mx-auto p-5'>
                         <div className="border-2 mx-auto w-full lg:w-[400px] lg:h-[60px] hover:bg-gray-200 cursor-pointer hover:text-blue-500 transition ease-in rounded-full my-5 flex items-center justify-center gap-3">
                             <p className="text-[38px] p-2"><FcGoogle></FcGoogle></p>
                             <h2 className="text-[18px] font-semibold">Continue With Google</h2>

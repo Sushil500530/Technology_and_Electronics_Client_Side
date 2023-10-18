@@ -1,15 +1,15 @@
-import { Outlet } from "react-router-dom";
+
 import Navbar from "./Header/Navbar";
+import Footer from "../components/Footer/Footer";
 
 
 
 const Root = () => {
     return (
-        <div className="min-h-screen w-full">
-            <div className=" w-full h-[85vh] relative bg-[url('https://i.ibb.co/t4KPQ7f/digital-connecting-banner-technology-polygon-background.jpg')] bg-cover bg-no-repeat">
+        <div className="w-full">
+            <div className=" w-full relative bg-[url('https://i.ibb.co/t4KPQ7f/digital-connecting-banner-technology-polygon-background.jpg')] bg-cover bg-no-repeat">
                 <div className="container mx-auto text-white">
                     <Navbar></Navbar>
-                    
                 </div>
                 <div className="lg:w-[800px] w-full h-full lg:mt-0 mt-11 lg:h-[400px] mx-auto text-white flex flex-col lg:justify-center items-center">
                     <h4 className="lg:text-6xl text-4xl font-semibold text-center"> Technology and Electronics</h4>
@@ -22,6 +22,14 @@ const Root = () => {
                 </div>
 
             </div>
+            {/* category  section */}
+                <div className="w-full h-screen">
+                  
+                </div>
+                   {/* footer  */}
+               <div className="bg-gray-500">
+               <Footer />
+               </div>
         </div>
     );
 };
