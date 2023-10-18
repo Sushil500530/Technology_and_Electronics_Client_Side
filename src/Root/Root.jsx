@@ -3,6 +3,7 @@ import Navbar from "./Header/Navbar";
 import Footer from "../components/Footer/Footer";
 import Category from "../components/Category/SingleCategory/Category";
 import Communication from "../components/otherCategory/communication/Communication";
+import Gps from "../components/otherCategory/GPS/Gps";
 
 
 
@@ -25,14 +26,15 @@ const Root = () => {
 
             </div>
             {/* category  section */}
-                <div className="w-full">
-                  <Category></Category>
-                </div>
-                <Communication></Communication>
-                   {/* footer  */}
-               <div className="bg-gray-500">
-               <Footer />
-               </div>
+            <div className="w-full">
+                <Category></Category>
+            </div>
+            <Communication></Communication>
+            <Gps></Gps>
+            {/* footer  */}
+            <div className="bg-gray-500 lg:p-0 pb-10">
+                <Footer />
+            </div>
         </div>
     );
 };
