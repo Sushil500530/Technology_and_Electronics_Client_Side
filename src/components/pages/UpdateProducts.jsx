@@ -16,8 +16,8 @@ const UpdateProducts = () => {
         const price = form.price.value;
         const description = form.description.value;
         const category = form.category.value;
-        const image = form.image.value;
-        const updatad = { name, price, description, category, image }
+        const thumbnail = form.image.value;
+        const updatad = { name, price, description, category, thumbnail }
         console.log(updatad);
         fetch(`http://localhost:5000/cart/${_id}`, {
             method: "PUT",

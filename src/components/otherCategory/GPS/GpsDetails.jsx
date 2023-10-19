@@ -6,10 +6,10 @@ import { FaCartPlus } from "react-icons/fa";
 
 const GpsDetails = () => {
     const navigate = useNavigate()
-    const loaderGoogle = useLoaderData();
+    const loaderGps = useLoaderData();
     const { id } = useParams();
     const convertId = parseInt(id);
-    const findDetails = loaderGoogle.find(details => details.id === convertId);
+    const findDetails = loaderGps.find(details => details.id === convertId);
     console.log(findDetails);
 
     const handleSelect = (obj) => {

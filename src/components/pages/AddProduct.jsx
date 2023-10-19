@@ -1,3 +1,4 @@
+import Swal from "sweetalert2";
 import Navbar from "../../Root/Header/Navbar";
 
 
@@ -6,16 +7,14 @@ const AddProduct = () => {
         e.preventDefault();
         const form = e.target;
         const name = form.name.value;
-        const supplier = form.supplier.value;
-        const chef = form.chef.value;
-        const taste = form.taste.value;
+        const price = form.price.value;
+        const description = form.description.value;
         const category = form.category.value;
-        const details = form.details.value;
-        const photo = form.photo.value;
-        const newProduct = { name, supplier, chef, taste, details, photo, category };
+        const thumbnail = form.image.value;
+        const newProduct = { name, price, description, category, thumbnail }
         console.log(newProduct);
 
-        fetch('', {
+        fetch('http://localhost:5000/cart', {
             method:"POST",
             headers: {
                 'content-type':'application/json'
@@ -25,6 +24,12 @@ const AddProduct = () => {
         .then(res => res.json())
         .then(data => {
             console.log(data);
+            Swal.fire({
+                title: 'Success!',
+                text: 'Product Updated Successfully!',
+                icon: 'success',
+                confirmButtonText: 'Ok'
+            })
         })
     }
     return (
@@ -52,7 +57,7 @@ const AddProduct = () => {
                                     <label className="label">
                                         <span className="label-text">Price</span>
                                     </label>
-                                    <input type="text" name="supplier" placeholder=" Price" className="input input-bordered" required />
+                                    <input type="text" name="price" placeholder=" Price" className="input input-bordered" required />
                                 </div>
                                 <div className="form-control">
                                     <label className="label">
@@ -66,14 +71,14 @@ const AddProduct = () => {
                                     <label className="label">
                                         <span className="label-text">Short description</span>
                                     </label>
-                                    <textarea className="textarea textarea-info" placeholder="Bio" required></textarea>
+                                    <textarea className="textarea textarea-info" name="description" placeholder="Bio" required></textarea>
                                 </div>
                             
                         <div className="form-control">
                             <label className="label">
                                 <span className="label-text">Image</span>
                             </label>
-                            <input type="text" name="photo" placeholder="Image URL" className="input input-bordered" required />
+                            <input type="text" name="image" placeholder="Image URL" className="input input-bordered" required />
                         </div>
                             </div>
                         </div>

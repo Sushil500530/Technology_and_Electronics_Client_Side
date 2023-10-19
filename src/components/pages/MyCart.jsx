@@ -55,7 +55,7 @@ const MyCart = () => {
                         myCarts.map(cart => <div key={cart._id}>
                             <div className="card bg-base-100 shadow-xl h-[550px]">
                                 <figure className="w-full h-[300px]">
-                                    <img className='w-full h-full hover:scale-110 transition ease-in rounded-md cursor-pointer' src={cart.thumbnail} alt="image" />
+                                    <img className='w-full h-[300px] hover:scale-110 transition ease-in rounded-md cursor-pointer' src={cart.thumbnail} alt="image" />
                                 </figure>
                                 <div className="card-body px-3">
                                     <div className=" space-y-2">
