@@ -1,6 +1,7 @@
 import { Link, useLoaderData, useNavigate, useParams } from "react-router-dom";
 import Footer from "../../Footer/Footer";
 import Navbar from "../../../Root/Header/Navbar";
+import { FaCartPlus } from "react-icons/fa";
 
 
 
@@ -28,8 +29,10 @@ const CommunicationDetails = () => {
     }
     return (
         <div>
-            <div className="container mx-auto">
+            <div className="bg-gray-100">
+                <div className="container mx-auto">
                 <Navbar></Navbar>
+                </div>
             </div>
             <div className="my-7 container mx-auto">
                 <div className="flex flex-col md:flex-col lg:flex-row justify-between">
@@ -49,11 +52,10 @@ const CommunicationDetails = () => {
                             <input type="radio" name="rating-2" className="mask mask-star-2 bg-orange-400" />
                             <input type="radio" name="rating-2" className="mask mask-star-2 bg-orange-400" checked />
                         </div>
-                        <div className="mt-5 space-x-5">
-                          <Link to={navigate('/')}>
-                          <button className="btn bg-transparent border border-success capitalize font-semibold text-xl hover:text-white hover:btn-success">Go Home</button>
-                          </Link>
-                           <button onClick={() => handleSelect(findDetails)} className="btn bg-transparent border border-success capitalize font-semibold text-xl hover:text-white hover:btn-success">Add to Cart</button>
+                        <div className="mt-5 w-full md:w-auto lg:w-auto space-x-5 flex flex-col md:flex-row lg:flex-row items-center justify-center gap-5">
+                          
+                          <button className="btn w-full md:w-auto lg:w-auto bg-transparent border border-success capitalize font-semibold text-xl hover:text-white hover:btn-success"> <Link to={navigate('/')}>Go Home </Link></button>
+                           <button onClick={() => handleSelect(findDetails)} className="btn w-full md:w-auto lg:w-auto bg-transparent border border-success capitalize font-semibold text-xl hover:text-white hover:btn-success tw-space-x-reverse-0">Add to Cart <FaCartPlus className="text-2xl"></FaCartPlus></button>
                         </div>
                     </div>
                 </div>

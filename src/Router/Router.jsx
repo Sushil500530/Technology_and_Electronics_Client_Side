@@ -6,8 +6,10 @@ import MainLayout from '../Root/mainLayout/MainLayout';
 import Root from '../Root/Root';
 import Resister from '../components/Resister/Resister';
 import AddProduct from '../components/pages/AddProduct';
-import Google from '../components/Category/google/Google';
+// import Google from '../components/Category/google/Google';
 import CommunicationDetails from '../components/otherCategory/communication/CommunicationDetails';
+import GpsDetails from '../components/otherCategory/GPS/GpsDetails';
+import MyCart from '../components/pages/MyCart';
 // import GoogleDetails from '../components/Category/google/GoogleDetails';
 // import SingleDetails from '../components/Category/google/SingleDetails';
 
@@ -37,9 +39,19 @@ const Router = createBrowserRouter([
                 element:<AddProduct></AddProduct>
             },
             {
+                path:'/myCart',
+                loader: () => fetch('http://localhost:5000/cart'),
+                element:<MyCart></MyCart>
+            },
+            {
                 path:'/communication/:id',
                 element:<CommunicationDetails></CommunicationDetails>,
                 loader: () => fetch('http://localhost:5000/communication')
+            },
+            {
+                path:'/gps/:id',
+                element:<GpsDetails></GpsDetails>,
+                loader: () => fetch('http://localhost:5000/gps')
             }
            
             // {

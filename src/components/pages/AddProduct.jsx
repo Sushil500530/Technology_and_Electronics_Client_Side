@@ -14,6 +14,18 @@ const AddProduct = () => {
         const photo = form.photo.value;
         const newProduct = { name, supplier, chef, taste, details, photo, category };
         console.log(newProduct);
+
+        fetch('', {
+            method:"POST",
+            headers: {
+                'content-type':'application/json'
+            },
+            body:JSON.stringify(newProduct)
+        })
+        .then(res => res.json())
+        .then(data => {
+            console.log(data);
+        })
     }
     return (
         <div className="container mx-auto">
