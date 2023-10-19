@@ -53,9 +53,9 @@ const MyCart = () => {
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                     {
                         myCarts.map(cart => <div key={cart._id}>
-                            <div className="card bg-base-100 shadow-xl h-[550px]">
+                            <div className="card bg-base-100 shadow-xl w-full h-[600px] ">
                                 <figure className="w-full h-[300px]">
-                                    <img className='w-full h-[300px] hover:scale-110 transition ease-in rounded-md cursor-pointer' src={cart.thumbnail} alt="image" />
+                                    <img className='w-full hover:scale-110 transition ease-in rounded-md cursor-pointer' src={cart.thumbnail} alt="image" />
                                 </figure>
                                 <div className="card-body px-3">
                                     <div className=" space-y-2">
@@ -64,7 +64,7 @@ const MyCart = () => {
                                         <h2 className="card-title">Category: {cart.category}</h2>
                                         <h2 className="card-title">Price:$$ {cart.price}</h2>
                                     </div>
-                                    <div className=" flex w-full gap-5 items-center">
+                                    <div className=" flex w-full gap-5 items-center ">
                                         <div className="flex w-[50%]">
                                             <button className="btn w-full bg-[#433c41] hover:bg-[#732358]"> <Link to={`/updateProduct/${cart._id}`}><FiEdit2 className='text-white text-xl'></FiEdit2></Link></button>
                                         </div>

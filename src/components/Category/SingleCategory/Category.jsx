@@ -34,7 +34,7 @@ const Category = () => {
                 }
                 <div className=" bg-gray-50 my-5 cursor-pointer shodow overflow-hidden ">
                     <div className="relative rounded-md group h-[350px]">
-                        <Link to='/'>
+                        <Link to='/createAdd'>
                             <div className="w-full h-full flex justify-center items-center text-3xl font-bold hover:text-white rounded-md bg-slate-300">
                             <div>
                             <GrAdd className="w-full text-5xl font-bold"></GrAdd>

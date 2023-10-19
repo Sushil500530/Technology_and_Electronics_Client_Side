@@ -11,8 +11,9 @@ import CommunicationDetails from '../components/otherCategory/communication/Comm
 import GpsDetails from '../components/otherCategory/GPS/GpsDetails';
 import MyCart from '../components/pages/MyCart';
 import UpdateProducts from '../components/pages/UpdateProducts';
-// import GoogleDetails from '../components/Category/google/GoogleDetails';
-// import SingleDetails from '../components/Category/google/SingleDetails';
+import GoogleDetails from '../components/Category/google/GoogleDetails';
+import CreateAddProduct from '../components/pages/CreateAddProduct';
+import Logo from '../components/Category/google/Logo';
 
 
 
@@ -64,16 +65,19 @@ const Router = createBrowserRouter([
                 loader: () => fetch('http://localhost:5000/technology'),
                 element:<Google></Google>
             },
-            // {
-            //     path:'/details/:id',
-            //     loader: () => fetch('http://localhost:5000/technology'),
-            //     element:<Google></Google>
-            // },
-            // {
-            //     path:'/singleDetails/:_id',
-            //     loader: () => fetch('http://localhost:5000/technology'),
-            //     element:<SingleDetails></SingleDetails>
-            // }
+            {
+                path:'/categoryDetails/:id',
+                loader: () => fetch('http://localhost:5000/technology'),
+                element: <GoogleDetails></GoogleDetails>
+            },
+            {
+                path:'/createAdd',
+                element:<CreateAddProduct></CreateAddProduct>
+            },
+            {
+                path:'/logo',
+                element:<Logo></Logo>
+            }
         ]
     }
 ])
