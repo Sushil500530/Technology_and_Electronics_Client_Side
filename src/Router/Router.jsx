@@ -10,6 +10,7 @@ import AddProduct from '../components/pages/AddProduct';
 import CommunicationDetails from '../components/otherCategory/communication/CommunicationDetails';
 import GpsDetails from '../components/otherCategory/GPS/GpsDetails';
 import MyCart from '../components/pages/MyCart';
+import UpdateProducts from '../components/pages/UpdateProducts';
 // import GoogleDetails from '../components/Category/google/GoogleDetails';
 // import SingleDetails from '../components/Category/google/SingleDetails';
 
@@ -52,6 +53,11 @@ const Router = createBrowserRouter([
                 path:'/gps/:id',
                 element:<GpsDetails></GpsDetails>,
                 loader: () => fetch('http://localhost:5000/gps')
+            },
+            {
+                path:'/updateProduct/:id',
+                loader: ({params}) => fetch(`http://localhost:5000/cart/${params.id}`),
+                element:<UpdateProducts></UpdateProducts>
             }
            
             // {

@@ -46,7 +46,7 @@ const AddProduct = () => {
                                     <label className="label">
                                         <span className="label-text">Product Name</span>
                                     </label>
-                                    <input type="text" name="name" placeholder="Product Name" className="input input-bordered" />
+                                    <input type="text" name="name" placeholder="Product Name" className="input input-bordered" required />
                                 </div>
                                 <div className="form-control">
                                     <label className="label">
@@ -66,27 +66,16 @@ const AddProduct = () => {
                                     <label className="label">
                                         <span className="label-text">Short description</span>
                                     </label>
-                                    <input type="text" name="chef" placeholder="write description" className="input input-bordered" />
+                                    <textarea className="textarea textarea-info" placeholder="Bio" required></textarea>
                                 </div>
-                                <div className="form-control">
-                                    <label className="label">
-                                        <span className="label-text">Rating</span>
-                                    </label>
-                                    <input type="text" name="taste" placeholder="Enter Cofee Taste" className="input input-bordered" required />
-                                </div>
-                                <div className="form-control">
-                                    <label className="label">
-                                        <span className="label-text">2+2 = ?</span>
-                                    </label>
-                                    <input type="text" name="details" placeholder="Ans: write" className="input input-bordered" required />
-                                </div>
-                            </div>
-                        </div>
+                            
                         <div className="form-control">
                             <label className="label">
                                 <span className="label-text">Image</span>
                             </label>
                             <input type="text" name="photo" placeholder="Image URL" className="input input-bordered" required />
+                        </div>
+                            </div>
                         </div>
                         <div className="form-control my-6">
                             <button className="btn btn-success text-white capitalize text-xl font-semibold hover:text-black">Add Product</button>
