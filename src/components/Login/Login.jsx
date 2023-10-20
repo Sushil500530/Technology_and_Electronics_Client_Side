@@ -1,6 +1,6 @@
 import { useContext, useState } from "react";
 import Navbar from "../../Root/Header/Navbar";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
 import { AuthContex } from "../../provider/AuthProvider";
@@ -10,6 +10,7 @@ import { ToastContainer, toast } from "react-toastify";
 const Login = () => {
     const { loginUser, googleSignIn } = useContext(AuthContex);
     const navigate = useNavigate();
+    const location = useLocation()
     const [terms, setTerms] = useState('');
     const [passwordError, setPasswordError] = useState('');
     const [showPassword, setShowPassword] = useState(false);
@@ -32,8 +33,8 @@ const Login = () => {
                     toast.success('log in successfully...!', {
                         position: toast.POSITION.TOP_CENTER
                     })
-                    return setTimeout(() => {
-                        navigate(location?.state ? location.state : "/")
+                     setTimeout(() => {
+                      return  navigate(location?.state ? location.state : "/")
                     }, 1000)
                 }
             })
@@ -48,8 +49,8 @@ const Login = () => {
                     toast.success('log in successfully...!', {
                         position: toast.POSITION.TOP_CENTER
                     })
-                    return setTimeout(() => {
-                        navigate(location?.state ? location.state : "/")
+                     setTimeout(() => {
+                       return navigate(location?.state ? location.state : "/")
                     }, 1000)
                 }
             })

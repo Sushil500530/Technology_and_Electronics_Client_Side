@@ -14,6 +14,7 @@ import UpdateProducts from '../components/pages/UpdateProducts';
 import GoogleDetails from '../components/Category/google/GoogleDetails';
 import CreateAddProduct from '../components/pages/CreateAddProduct';
 import Logo from '../components/Category/google/Logo';
+import PrivetRouter from './PrivetRouter';
 
 
 
@@ -42,33 +43,33 @@ const Router = createBrowserRouter([
             },
             {
                 path:'/myCart',
-                loader: () => fetch('http://localhost:5000/cart'),
-                element:<MyCart></MyCart>
+                loader: () => fetch('https://projects-server-side.vercel.app/cart'),
+                element: <PrivetRouter><MyCart></MyCart></PrivetRouter>
             },
             {
                 path:'/communication/:id',
-                element:<CommunicationDetails></CommunicationDetails>,
-                loader: () => fetch('http://localhost:5000/communication')
+                element: <PrivetRouter><CommunicationDetails></CommunicationDetails></PrivetRouter>,
+                loader: () => fetch('https://projects-server-side.vercel.app/communication')
             },
             {
                 path:'/gps/:id',
-                element:<GpsDetails></GpsDetails>,
-                loader: () => fetch('http://localhost:5000/gps')
+                element: <PrivetRouter><GpsDetails></GpsDetails></PrivetRouter>,
+                loader: () => fetch('https://projects-server-side.vercel.app/gps')
             },
             {
                 path:'/updateProduct/:id',
-                loader: ({params}) => fetch(`http://localhost:5000/cart/${params.id}`),
+                loader: ({params}) => fetch(`https://projects-server-side.vercel.app/cart/${params.id}`),
                 element:<UpdateProducts></UpdateProducts>
             },
             {
                 path:'/details/:id',
-                loader: () => fetch('http://localhost:5000/technology'),
+                loader: () => fetch('https://projects-server-side.vercel.app/technology'),
                 element:<Google></Google>
             },
             {
-                path:'/categoryDetails/:id',
-                loader: () => fetch('http://localhost:5000/technology'),
-                element: <GoogleDetails></GoogleDetails>
+                path:'/details/categoryDetails/:id',
+                loader: () => fetch('https://projects-server-side.vercel.app/technology'),
+                element: <PrivetRouter><GoogleDetails></GoogleDetails></PrivetRouter>
             },
             {
                 path:'/createAdd',

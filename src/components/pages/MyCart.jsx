@@ -9,7 +9,7 @@ import { useState } from "react";
 
 const MyCart = () => {
     const loaderCart = useLoaderData();
-    const [myCarts,setMyCarts] = useState(loaderCart)
+    const [myCarts, setMyCarts] = useState(loaderCart)
     console.log(myCarts);
     const handleDelete = (_id) => {
         console.log('delete id is', _id);
@@ -23,7 +23,7 @@ const MyCart = () => {
             confirmButtonText: 'Yes, delete it!'
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`http://localhost:5000/cart/${_id}`, {
+                fetch(`https://projects-server-side.vercel.app/cart/${_id}`, {
                     method: "DELETE"
                 })
                     .then(res => res.json())
@@ -58,17 +58,26 @@ const MyCart = () => {
                                     <img className='w-full hover:scale-110 transition ease-in rounded-md cursor-pointer' src={cart.thumbnail} alt="image" />
                                 </figure>
                                 <div className="card-body px-3">
+                                    <div className="rating">
+                                        <input type="radio" name="rating-2" className="mask mask-star-2 bg-orange-400" />
+                                        <input type="radio" name="rating-2" className="mask mask-star-2 bg-orange-400" />
+                                        <input type="radio" name="rating-2" className="mask mask-star-2 bg-orange-400" />
+                                        <input type="radio" name="rating-2" className="mask mask-star-2 bg-orange-400" />
+                                        <input type="radio" name="rating-2" className="mask mask-star-2 bg-orange-400" checked />
+                                    </div>
                                     <div className=" space-y-2">
                                         <h2 className="card-title capitalize">{cart.name}</h2>
                                         <p>{cart.description}</p>
                                         <h2 className="card-title">Category: {cart.category}</h2>
                                         <h2 className="card-title">Price:$$ {cart.price}</h2>
                                     </div>
-                                    <div className=" flex w-full gap-5 items-center ">
-                                        <div className="flex w-[50%]">
-                                            <button className="btn w-full bg-[#433c41] hover:bg-[#732358]"> <Link to={`/updateProduct/${cart._id}`}><FiEdit2 className='text-white text-xl'></FiEdit2></Link></button>
-                                        </div>
-                                        <div className="flex w-[50%]">
+                                    <div className="grid grid-cols-2 gap-5 items-center">
+                                        <Link to={`/updateProduct/${cart._id}`}>
+                                            <div >
+                                                <button className="btn w-full bg-[#433c41] hover:bg-[#732358]"><FiEdit2 className='text-white text-xl'></FiEdit2></button>
+                                            </div>
+                                        </Link>
+                                        <div>
                                             <button onClick={() => handleDelete(cart._id)} className="btn w-full bg-[#EA4744] hover:bg-[#930a07]"><AiFillDelete className='text-white text-xl'></AiFillDelete></button>
                                         </div>
                                     </div>

@@ -6,7 +6,7 @@ const Communication = () => {
     const [communication, setCommunication] = useState([]);
     console.log(communication);
     useEffect(() => {
-        fetch('http://localhost:5000/communication')
+        fetch('https://projects-server-side.vercel.app/communication')
             .then(res => res.json())
             .then(data => setCommunication(data))
     }, [])

@@ -7,7 +7,7 @@ const Gps = () => {
     const [gpsElement, setGpsElement] = useState([]);
     console.log(gpsElement);
     useEffect(() => {
-        fetch('http://localhost:5000/gps')
+        fetch('https://projects-server-side.vercel.app/gps')
             .then(res => res.json())
             .then(data => setGpsElement(data))
     }, [])

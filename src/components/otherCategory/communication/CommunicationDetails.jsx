@@ -2,6 +2,7 @@ import { Link, useLoaderData, useNavigate, useParams } from "react-router-dom";
 import Footer from "../../Footer/Footer";
 import Navbar from "../../../Root/Header/Navbar";
 import { FaCartPlus } from "react-icons/fa";
+import Swal from "sweetalert2";
 
 
 
@@ -15,23 +16,31 @@ const CommunicationDetails = () => {
 
     const handleSelect = (obj) => {
         console.log(obj);
-        fetch('http://localhost:5000/cart', {
+        fetch('https://projects-server-side.vercel.app/cart', {
             method: "POST",
             headers: {
                 'content-type': 'application/json'
             },
-            body:JSON.stringify(obj)
+            body: JSON.stringify(obj)
         })
-        .then(res => res.json())
-        .then(data => {
-            console.log(data);
-        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                if (data.insertedId) {
+                    Swal.fire({
+                        title: 'Success!',
+                        text: 'Added Successfully!',
+                        icon: 'success',
+                        confirmButtonText: 'Ok'
+                    })
+                }
+            })
     }
     return (
         <div>
             <div className="bg-gray-100">
                 <div className="container mx-auto">
-                <Navbar></Navbar>
+                    <Navbar></Navbar>
                 </div>
             </div>
             <div className="my-7 container mx-auto">
@@ -53,9 +62,9 @@ const CommunicationDetails = () => {
                             <input type="radio" name="rating-2" className="mask mask-star-2 bg-orange-400" checked />
                         </div>
                         <div className="mt-5 w-full md:w-auto lg:w-auto space-x-5 flex flex-col md:flex-row lg:flex-row items-center justify-center gap-5">
-                          
-                          <button className="btn w-full md:w-auto lg:w-auto bg-transparent border border-success capitalize font-semibold text-xl hover:text-white hover:btn-success"> <Link to={navigate('/')}>Go Home </Link></button>
-                           <button onClick={() => handleSelect(findDetails)} className="btn w-full md:w-auto lg:w-auto bg-transparent border border-success capitalize font-semibold text-xl hover:text-white hover:btn-success tw-space-x-reverse-0">Add to Cart <FaCartPlus className="text-2xl"></FaCartPlus></button>
+
+                            <button className="btn w-full md:w-auto lg:w-auto bg-transparent border border-success capitalize font-semibold text-xl hover:text-white hover:btn-success"> <Link to={navigate('/')}>Go Home </Link></button>
+                            <button onClick={() => handleSelect(findDetails)} className="btn w-full md:w-auto lg:w-auto bg-transparent border border-success capitalize font-semibold text-xl hover:text-white hover:btn-success tw-space-x-reverse-0">Add to Cart <FaCartPlus className="text-2xl"></FaCartPlus></button>
                         </div>
                     </div>
                 </div>

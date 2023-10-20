@@ -2,6 +2,7 @@ import { Link, useLoaderData, useNavigate, useParams } from "react-router-dom";
 import Footer from "../../Footer/Footer";
 import Navbar from "../../../Root/Header/Navbar";
 import { FaCartPlus } from "react-icons/fa";
+import Swal from "sweetalert2";
 
 
 const GpsDetails = () => {
@@ -14,7 +15,7 @@ const GpsDetails = () => {
 
     const handleSelect = (obj) => {
         console.log(obj);
-        fetch('http://localhost:5000/cart', {
+        fetch('https://projects-server-side.vercel.app/cart', {
             method: "POST",
             headers: {
                 'content-type': 'application/json'
@@ -24,7 +25,16 @@ const GpsDetails = () => {
         .then(res => res.json())
         .then(data => {
             console.log(data);
-        })}
+           if(data.insertedId){
+            Swal.fire({
+                title: 'Success!',
+                text: 'Added Successfully!',
+                icon: 'success',
+                confirmButtonText: 'Ok'
+            })
+           }
+        })
+    }
     return (
         <div>
         <div className="bg-gray-100">

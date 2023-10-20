@@ -9,7 +9,7 @@ const Google = () => {
     const { id } = useParams();
     const convertId = parseInt(id);
     const findGoogle = loaderGoogle.find(details => details.id === convertId);
-    console.log(findGoogle.slider[0].img1);
+    // console.log(findGoogle);
 
     return (
         <div>
@@ -69,7 +69,7 @@ const Google = () => {
                             <div key={element.id} className=" bg-gray-50 my-5 cursor-pointer shadow-lg overflow-hidden ">
                                 <div className="card bg-base-100 shadow-xl">
                                     <figure className="w-full h-[300px]">
-                                        <img className='w-full h-[300px] hover:scale-110 transition ease-in rounded-md cursor-pointer' src={element.image} alt="image" />
+                                        <img className='w-full h-[300px] hover:scale-110 transition ease-in rounded-md cursor-pointer' src={element.thumbnail} alt="image" />
                                     </figure>
                                     <div className="card-body px-3">
                                     <div className="rating">
@@ -91,12 +91,12 @@ const Google = () => {
                                             </div>
                                         </div>
                                         <div className="grid grid-cols-2 gap-5 items-center">
-                                            <Link to={`/categoryDetails/${element.id}`}>
+                                            <Link to={`/details/categoryDetails/${element.id}`}>
                                                 <div >
                                                     <button className="btn w-full btn-success">Details</button>
                                                 </div>
                                             </Link>
-                                            <Link to={`/categoryDetails/${element.id}`}>
+                                            <Link to={`/details/categoryDetails/${element.id}`}>
                                                 <div >
                                                     <button className="btn w-full btn-success">Update</button>
                                                 </div>
