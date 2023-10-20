@@ -1,5 +1,5 @@
 
-live show : https://event-management-e002d.firebaseapp.com/
+live show : https://technology-a42db.web.app/
 
 
 <b>Technology and Electronics</b>
