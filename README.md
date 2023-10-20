@@ -1,8 +1,10 @@
-# React + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+live show : https://event-management-e002d.firebaseapp.com/
 
-Currently, two official plugins are available:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+<b>Technology and Electronics</b>
+- There are many categories including Apple, Samsung, Time, Google, Intel etc.
+- When a category is clicked it will show the products accordingly and you can select.
+- Also, there are 2 extra sections below, click on them to see the details and  add can take cart to my court.
+- User can add products as per their wish and view them.
+- finally you visite this website and show fevorite technology or electronics and add to cart it which that you like.
