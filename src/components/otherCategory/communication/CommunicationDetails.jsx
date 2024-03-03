@@ -1,4 +1,4 @@
-import { Link, useLoaderData } from "react-router-dom";
+import { Link, useLoaderData, useNavigate } from "react-router-dom";
 import Footer from "../../Footer/Footer";
 import Navbar from "../../../Root/Header/Navbar";
 import { FaCartPlus } from "react-icons/fa";
@@ -8,10 +8,10 @@ import Swal from "sweetalert2";
 
 const CommunicationDetails = () => {
     const findData = useLoaderData();
-
+    const navigate = useNavigate();
     const handleSelect = (obj) => {
-        console.log(obj);
-        fetch('https://projects-server-side.vercel.app/cart', {
+        // console.log(obj);
+        fetch('http://localhost:5000/carts', {
             method: "POST",
             headers: {
                 'content-type': 'application/json'
@@ -20,7 +20,6 @@ const CommunicationDetails = () => {
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data);
                 if (data.insertedId) {
                     Swal.fire({
                         title: 'Success!',
@@ -28,6 +27,7 @@ const CommunicationDetails = () => {
                         icon: 'success',
                         confirmButtonText: 'Ok'
                     })
+                    return navigate('/')
                 }
             })
     }

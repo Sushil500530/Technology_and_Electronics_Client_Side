@@ -15,7 +15,7 @@ const MyCart = () => {
         .then(data => setMyCarts(data))
     },[])
     const handleDelete = (_id) => {
-        console.log('delete id is', _id);
+        // console.log('delete id is', _id);
         Swal.fire({
             title: 'Are you sure?',
             text: "You won't be able to revert this!",
@@ -52,7 +52,7 @@ const MyCart = () => {
                     <Navbar></Navbar>
                 </div>
             </div>
-            <div className="container mx-auto my-10">
+            <div className="container mx-auto my-10 p-5">
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                     {
                         myCarts.map(cart => <div key={cart._id}>

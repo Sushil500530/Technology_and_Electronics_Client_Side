@@ -39,7 +39,7 @@ const Router = createBrowserRouter([
             },
             {
                 path: '/addProduct',
-                element: <AddProduct></AddProduct>
+                element:<PrivetRouter><AddProduct></AddProduct></PrivetRouter>
             },
             {
                 path: '/technology/:category',
@@ -79,7 +79,7 @@ const Router = createBrowserRouter([
 
             {
                 path: '/createAdd',
-                element: <CreateAddProduct></CreateAddProduct>
+                element: <PrivetRouter><CreateAddProduct></CreateAddProduct></PrivetRouter>
             },
             {
                 path: '/logo',

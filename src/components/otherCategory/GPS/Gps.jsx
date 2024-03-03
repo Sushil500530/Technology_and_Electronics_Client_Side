@@ -1,15 +1,21 @@
 import { useEffect, useState } from "react";
 import { BsFillArrowRightCircleFill } from "react-icons/bs";
 import { Link } from "react-router-dom";
+import Loader from "../../Loader";
 
 
 const Gps = () => {
     const [gpsElement, setGpsElement] = useState([]);
+    const [isLoading,setIsLoading] = useState(true);
     // console.log(gpsElement);
     useEffect(() => {
+        setIsLoading(true)
         fetch('http://localhost:5000/gps')
             .then(res => res.json())
-            .then(data => setGpsElement(data))
+            .then(data => {
+                setGpsElement(data)
+                setIsLoading(false);
+            })
     }, [])
     return (
         <div className="container mx-auto my-12 p-5">
@@ -37,6 +43,7 @@ const Gps = () => {
                 }
 
             </div>
+           { isLoading && <Loader />}
         </div>
     );
 };

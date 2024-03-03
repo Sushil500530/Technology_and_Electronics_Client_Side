@@ -1,13 +1,14 @@
 import { useEffect, useState } from "react";
 import { BsFillArrowRightCircleFill } from "react-icons/bs";
 import { Link } from "react-router-dom";
+import Loader from "../../Loader";
 
 const Communication = () => {
     const [communication, setCommunication] = useState([]);
     useEffect(() => {
         fetch('http://localhost:5000/communications')
             .then(res => res.json())
-            .then(data => setCommunication(data))
+            .then(data => {setCommunication(data)})
     }, [])
     return (
 
@@ -36,6 +37,7 @@ const Communication = () => {
                 }
 
             </div>
+            {communication?.length <= 0 && <Loader />}
         </div>
     );
 };

@@ -1,4 +1,4 @@
-import { Link, useLoaderData } from "react-router-dom";
+import { Link, useLoaderData, useNavigate } from "react-router-dom";
 import Footer from "../../Footer/Footer";
 import Navbar from "../../../Root/Header/Navbar";
 import { FaCartPlus } from "react-icons/fa";
@@ -7,10 +7,11 @@ import Swal from "sweetalert2";
 
 const GpsDetails = () => {
     const findDetails = useLoaderData();
+    const navigate = useNavigate();
 
     const handleSelect = (obj) => {
         console.log(obj);
-        fetch('https://projects-server-side.vercel.app/cart', {
+        fetch('http://localhost:5000/carts', {
             method: "POST",
             headers: {
                 'content-type': 'application/json'
@@ -27,6 +28,7 @@ const GpsDetails = () => {
                 icon: 'success',
                 confirmButtonText: 'Ok'
             })
+            return navigate('/')
            }
         })
     }

@@ -1,4 +1,3 @@
-
 import Navbar from "./Header/Navbar";
 import Footer from "../components/Footer/Footer";
 import Category from "../components/Category/SingleCategory/Category";
