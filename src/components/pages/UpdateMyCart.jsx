@@ -1,13 +1,11 @@
 import { useLoaderData, useNavigate } from "react-router-dom";
-import Navbar from "../../Root/Header/Navbar";
 import Swal from "sweetalert2";
+import Navbar from './../../Root/Header/Navbar';
 
-
-const UpdateProducts = () => {
+const UpdateMyCart = () => {
     const updateProduct = useLoaderData();
     const { _id, thumbnail, title, description, category, price } = updateProduct[0] || {};
     const navigate = useNavigate();
-    // console.log(updateProduct);
 
     const handleUpdateProduct = (e) => {
         e.preventDefault();
@@ -18,7 +16,7 @@ const UpdateProducts = () => {
         const category = form.category.value;
         const thumbnail = form.image.value;
         const updatad = { title, price, description, category, thumbnail }
-        fetch(`http://localhost:5000/updated/${_id}`, {
+        fetch(`http://localhost:5000/updated-cart/${_id}`, {
             method: "PUT",
             headers: {
                 'content-type': 'application/json'
@@ -40,7 +38,7 @@ const UpdateProducts = () => {
     }
     return (
         <div className="container mx-auto">
-            <Navbar></Navbar>
+            <Navbar />
             <div className="w-full h-full bg-[#f6f8fa] p-5 lg:px-12">
                 <div className="space-y-5 pb-5">
                     <h1 className="text-3xl font-bold text-center pt-5 lg:pt-12">
@@ -98,4 +96,4 @@ const UpdateProducts = () => {
     );
 };
 
-export default UpdateProducts;
+export default UpdateMyCart;

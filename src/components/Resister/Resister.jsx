@@ -83,7 +83,7 @@ const Resister = () => {
                             </span>
                         </div>
                         <p className='text-red-500 font-medium'>{passwordError}</p>
-                        <button className="btn bg-blue-600 text-white hover:text-black text-[18px] w-full capitalize font-semibold">Resister</button>
+                        <button className="btn bg-success text-white hover:text-black text-[18px] w-full capitalize font-semibold">Resister</button>
                         <h2 className="font-bold text-center">Already Have an Account? <Link to='/login' className="text-blue-600 hover:underline ">Please Login</Link></h2>
                     </form>
                     <ToastContainer />

@@ -4,13 +4,16 @@ import { FiEdit2 } from 'react-icons/fi';
 import { AiFillDelete } from 'react-icons/ai';
 import Footer from "../Footer/Footer";
 import Swal from "sweetalert2";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 
 const MyCart = () => {
-    const loaderCart = useLoaderData();
-    const [myCarts, setMyCarts] = useState(loaderCart)
-    console.log(myCarts);
+    const [myCarts, setMyCarts] = useState([]);
+    useEffect(()=>{
+        fetch('http://localhost:5000/carts')
+        .then(res=> res.json())
+        .then(data => setMyCarts(data))
+    },[])
     const handleDelete = (_id) => {
         console.log('delete id is', _id);
         Swal.fire({
@@ -23,7 +26,7 @@ const MyCart = () => {
             confirmButtonText: 'Yes, delete it!'
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`https://projects-server-side.vercel.app/cart/${_id}`, {
+                fetch(`http://localhost:5000/cart/${_id}`, {
                     method: "DELETE"
                 })
                     .then(res => res.json())
@@ -55,7 +58,7 @@ const MyCart = () => {
                         myCarts.map(cart => <div key={cart._id}>
                             <div className="card bg-base-100 shadow-xl w-full h-[600px] ">
                                 <figure className="w-full h-[300px]">
-                                    <img className='w-full hover:scale-110 transition ease-in rounded-md cursor-pointer' src={cart.thumbnail} alt="image" />
+                                    <img className='w-full hover:scale-105 transition ease-in rounded-md cursor-pointer' src={cart.thumbnail} alt="image" />
                                 </figure>
                                 <div className="card-body px-3">
                                     <div className="rating">
@@ -72,7 +75,7 @@ const MyCart = () => {
                                         <h2 className="card-title">Price:$$ {cart.price}</h2>
                                     </div>
                                     <div className="grid grid-cols-2 gap-5 items-center">
-                                        <Link to={`/updateProduct/${cart._id}`}>
+                                        <Link to={`/update-mycart/${cart._id}`}>
                                             <div >
                                                 <button className="btn w-full bg-[#433c41] hover:bg-[#732358]"><FiEdit2 className='text-white text-xl'></FiEdit2></button>
                                             </div>
@@ -84,7 +87,7 @@ const MyCart = () => {
                                 </div>
                             </div>
                         </div>)
-                    }
+                    } 
                 </div>
             </div>
             <div>

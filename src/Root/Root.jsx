@@ -10,7 +10,7 @@ import Gps from "../components/otherCategory/GPS/Gps";
 const Root = () => {
     return (
         <div className="w-full">
-            <div className=" w-full pb-10 lg:h-[750px] md:pb-36 h-full relative bg-[url('https://i.ibb.co/t4KPQ7f/digital-connecting-banner-technology-polygon-background.jpg')] bg-cover bg-center bg-no-repeat">
+            <div className=" w-full pb-10 lg:h-[750px] md:pb-36 h-full relative bg-[url('https://i.ibb.co/kcF52Q7/images-4.jpg')] bg-cover bg-center bg-no-repeat object-contain">
                 <div className="container mx-auto text-white">
                     <Navbar></Navbar>
                 </div>

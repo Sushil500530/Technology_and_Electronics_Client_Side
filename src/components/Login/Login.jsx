@@ -90,7 +90,7 @@ const Login = () => {
                             <p className="text-blue-600 underline"><Link to="#">Forget Password</Link></p>
                         </div>
                         <p className='font-medium text-red-500'>{terms}</p>
-                        <button className="btn bg-blue-600 text-white hover:text-black text-[18px] w-full capitalize font-semibold">Login</button>
+                        <button className="btn btn-success text-white hover:text-black text-[18px] w-full capitalize font-semibold">Login</button>
                         <h2 className="font-bold text-center">Don't have an account? <Link to='/resister' className="text-blue-600 hover:underline ">Create an account</Link></h2>
                     </form>
                     <div className="inline-flex items-center justify-center w-full">

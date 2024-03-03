@@ -1,4 +1,3 @@
-
 import { createBrowserRouter } from 'react-router-dom';
 import ErrorPage from '../error/ErrorPage';
 import Login from '../components/Login/Login';
@@ -6,7 +5,6 @@ import MainLayout from '../Root/mainLayout/MainLayout';
 import Root from '../Root/Root';
 import Resister from '../components/Resister/Resister';
 import AddProduct from '../components/pages/AddProduct';
-import Google from '../components/Category/google/Google';
 import CommunicationDetails from '../components/otherCategory/communication/CommunicationDetails';
 import GpsDetails from '../components/otherCategory/GPS/GpsDetails';
 import MyCart from '../components/pages/MyCart';
@@ -15,69 +13,77 @@ import GoogleDetails from '../components/Category/google/GoogleDetails';
 import CreateAddProduct from '../components/pages/CreateAddProduct';
 import Logo from '../components/Category/google/Logo';
 import PrivetRouter from './PrivetRouter';
+import CategoryByShow from '../components/Category/google/CategoryByShow';
+import UpdateMyCart from '../components/pages/UpdateMyCart';
 
 
 
 
 const Router = createBrowserRouter([
     {
-        path:'/',
+        path: '/',
         element: <MainLayout></MainLayout>,
-        errorElement:<ErrorPage></ErrorPage>,
-        children : [
+        errorElement: <ErrorPage></ErrorPage>,
+        children: [
             {
-                path:'/',
+                path: '/',
                 element: <Root></Root>
             },
             {
-                path:'/login',
-                element:<Login></Login>
+                path: '/login',
+                element: <Login></Login>
             },
             {
-                path:'/resister',
-                element:<Resister></Resister>
+                path: '/resister',
+                element: <Resister></Resister>
             },
             {
-                path:'/addProduct',
-                element:<AddProduct></AddProduct>
+                path: '/addProduct',
+                element: <AddProduct></AddProduct>
             },
             {
-                path:'/myCart',
-                loader: () => fetch('https://projects-server-side.vercel.app/cart'),
+                path: '/technology/:category',
+                loader: ({params}) => fetch(`http://localhost:5000/technology/${params.category}`),
+                element: <CategoryByShow></CategoryByShow>
+            },
+            {
+                path: '/myCart',
                 element: <PrivetRouter><MyCart></MyCart></PrivetRouter>
             },
             {
-                path:'/communication/:id',
+                path: '/communication/:id',
                 element: <PrivetRouter><CommunicationDetails></CommunicationDetails></PrivetRouter>,
-                loader: () => fetch('https://projects-server-side.vercel.app/communication')
+                loader: () => fetch('http://localhost:5173/communication')
             },
             {
-                path:'/gps/:id',
+                path: '/gps/:id',
                 element: <PrivetRouter><GpsDetails></GpsDetails></PrivetRouter>,
-                loader: () => fetch('https://projects-server-side.vercel.app/gps')
+                loader: () => fetch('http://localhost:5173/gps')
             },
             {
-                path:'/updateProduct/:id',
-                loader: ({params}) => fetch(`https://projects-server-side.vercel.app/cart/${params.id}`),
-                element:<UpdateProducts></UpdateProducts>
+                path: '/updateProduct/:id',
+                loader: ({ params }) => fetch(`http://localhost:5000/category/${params.id}`),
+                element: <UpdateProducts></UpdateProducts>
             },
+           
             {
-                path:'/details/:id',
-                loader: () => fetch('https://projects-server-side.vercel.app/technology'),
-                element:<Google></Google>
-            },
-            {
-                path:'/details/categoryDetails/:id',
-                loader: () => fetch('https://projects-server-side.vercel.app/technology'),
+                path: '/category/:id',
+                loader: ({params}) => fetch(`http://localhost:5000/category/${params.id}`),
                 element: <PrivetRouter><GoogleDetails></GoogleDetails></PrivetRouter>
             },
+             {
+                path: '/update-mycart/:id',
+                loader: ({ params }) => fetch(`http://localhost:5000/cart/${params.id}`),
+                element: <UpdateMyCart />
+            },
+
             {
-                path:'/createAdd',
-                element:<CreateAddProduct></CreateAddProduct>
+                path: '/createAdd',
+                element: <CreateAddProduct></CreateAddProduct>
             },
             {
-                path:'/logo',
-                element:<Logo></Logo>
+                path: '/logo',
+                element: <Logo></Logo>
             }
         ]
     }

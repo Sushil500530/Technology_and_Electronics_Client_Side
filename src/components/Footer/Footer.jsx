@@ -5,7 +5,7 @@ const Footer = () => {
         <div className=" p-5 container mx-auto text-base-content w-full lg:h-[50vh] h-[650px] flex flex-col items-start justify-center py-8 mt-12">
             <footer className="grid grid-cols-1 w-full  md:grid-cols-2 lg:grid-cols-4 gap-8 items-center justify-between">
                 <div className="lg:w-[300px] lg:m-0 mx-auto flex space-y-5 flex-col items-center justify-center pt-10">
-                    <img className="w-full h-[100px] rounded-md" src="https://i.ibb.co/qrzzM30/png-transparent-logo-technology-letter-font-technology-blue-electronics-text-thumbnail.png" alt="image" />
+                    <img className="w-full h-[100px] rounded-md" src="https://i.ibb.co/D5NkcBS/png-clipart-technology-technology-electronics-logo.png" alt="image" />
                     <div className="flex gap-4 items-center justify-center">
                         <a href="#" className="w-9 h-9 hover:text-blue-500 transition ease-in cursor-pointer  rounded-full flex items-center justify-center"><FaFacebook className="text-5xl"></FaFacebook></a>
                         <a href="#" className="w-9 h-9 hover:text-red-500 transition ease-in cursor-pointer  rounded-full flex items-center justify-center"><FaYoutube className="text-5xl"></FaYoutube></a>
