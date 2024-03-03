@@ -6,7 +6,7 @@ import Swal from "sweetalert2";
 
 
 
-const GoogleDetails = () => {
+const CategoryDetails = () => {
     const findItem = useLoaderData();
     const navigate = useNavigate();
     const handleSelect = (find) => {
@@ -82,4 +82,4 @@ const GoogleDetails = () => {
     );
 };
 
-export default GoogleDetails;
+export default CategoryDetails;

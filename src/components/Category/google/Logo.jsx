@@ -10,7 +10,7 @@ const Logo = () => {
     const [image, setImage] = useState([]);
 
     useEffect(() => {
-        fetch('https://projects-server-side.vercel.app/gps')
+        fetch('http://localhost:5000/gps')
             .then(res => res.json())
             .then(data => setImage(data))
     }, [])

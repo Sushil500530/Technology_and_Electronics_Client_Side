@@ -1,4 +1,4 @@
-import { Link, useLoaderData } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Navbar from "../../Root/Header/Navbar";
 import { FiEdit2 } from 'react-icons/fi';
 import { AiFillDelete } from 'react-icons/ai';

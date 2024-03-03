@@ -4,9 +4,8 @@ import { Link } from "react-router-dom";
 
 const Communication = () => {
     const [communication, setCommunication] = useState([]);
-    console.log(communication);
     useEffect(() => {
-        fetch('https://projects-server-side.vercel.app/communication')
+        fetch('http://localhost:5000/communications')
             .then(res => res.json())
             .then(data => setCommunication(data))
     }, [])
@@ -22,7 +21,7 @@ const Communication = () => {
                     communication.map(communi =>
                         <div key={communi.id} className=" bg-gray-50 my-5 cursor-pointer shodow overflow-hidden ">
                             <div className="relative rounded-md group h-[350px]">
-                                <Link to={`/communication/${communi.id}`}>
+                                <Link to={`/communication/${communi._id}`}>
                                     <img src={communi.thumbnail} className="w-full h-full rounded-md"></img>
                                     <div className="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center gap-2 opacity-0 group-hover:opacity-100 rounded-md transition">
                                         <h2 className="text-white text-lg w-9 h-8 rounded-full flex items-center justify-center hover:bg-gray-800 transition ">

@@ -9,12 +9,12 @@ import CommunicationDetails from '../components/otherCategory/communication/Comm
 import GpsDetails from '../components/otherCategory/GPS/GpsDetails';
 import MyCart from '../components/pages/MyCart';
 import UpdateProducts from '../components/pages/UpdateProducts';
-import GoogleDetails from '../components/Category/google/GoogleDetails';
 import CreateAddProduct from '../components/pages/CreateAddProduct';
 import Logo from '../components/Category/google/Logo';
 import PrivetRouter from './PrivetRouter';
 import CategoryByShow from '../components/Category/google/CategoryByShow';
 import UpdateMyCart from '../components/pages/UpdateMyCart';
+import CategoryDetails from '../components/Category/google/CategoryDetails';
 
 
 
@@ -53,12 +53,12 @@ const Router = createBrowserRouter([
             {
                 path: '/communication/:id',
                 element: <PrivetRouter><CommunicationDetails></CommunicationDetails></PrivetRouter>,
-                loader: () => fetch('http://localhost:5173/communication')
+                loader: ({params}) => fetch(`http://localhost:5000/communication/${params.id}`)
             },
             {
                 path: '/gps/:id',
                 element: <PrivetRouter><GpsDetails></GpsDetails></PrivetRouter>,
-                loader: () => fetch('http://localhost:5173/gps')
+                loader: ({params}) => fetch(`http://localhost:5000/gps/${params.id}`)
             },
             {
                 path: '/updateProduct/:id',
@@ -69,7 +69,7 @@ const Router = createBrowserRouter([
             {
                 path: '/category/:id',
                 loader: ({params}) => fetch(`http://localhost:5000/category/${params.id}`),
-                element: <PrivetRouter><GoogleDetails></GoogleDetails></PrivetRouter>
+                element: <PrivetRouter><CategoryDetails /></PrivetRouter>
             },
              {
                 path: '/update-mycart/:id',

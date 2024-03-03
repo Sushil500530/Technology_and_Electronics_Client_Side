@@ -1,4 +1,4 @@
-import { Link, useLoaderData, useNavigate, useParams } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 import Footer from "../../Footer/Footer";
 import Navbar from "../../../Root/Header/Navbar";
 import { FaCartPlus } from "react-icons/fa";
@@ -6,12 +6,7 @@ import Swal from "sweetalert2";
 
 
 const GpsDetails = () => {
-    const navigate = useNavigate()
-    const loaderGps = useLoaderData();
-    const { id } = useParams();
-    const convertId = parseInt(id);
-    const findDetails = loaderGps.find(details => details.id === convertId);
-    console.log(findDetails);
+    const findDetails = useLoaderData();
 
     const handleSelect = (obj) => {
         console.log(obj);
@@ -48,7 +43,7 @@ const GpsDetails = () => {
                     <img className="h-[480px] w-full" src={findDetails?.thumbnail} alt="meal-photo" />
                 </div>
                 <div className="lg:h-[450px] flex flex-col p-5 justify-center items-center lg:items-start lg:justify-start lg:flex-col lg:w-[40%]">
-                    <h2 className="text-2xl font-semibold  capitalize">{findDetails?.name}</h2>
+                    <h2 className="text-2xl font-semibold  capitalize">{findDetails?.title}</h2>
                     <hr className="border-black w-[35%] my-3" />
                     <p>{findDetails?.description}</p>
                     <p className="mt-5 text-xl font-semibold capitalize">Category : {findDetails?.category}</p>
@@ -62,7 +57,7 @@ const GpsDetails = () => {
                     </div>
                     <div className="mt-5 space-x-5 flex flex-col md:flex-row lg:flex-row items-center justify-center gap-5">
                      
-                      <button className="btn bg-transparent border border-success capitalize font-semibold text-xl hover:text-white hover:btn-success "> <Link to={navigate('/')}>Go Home </Link></button>
+                      <button className="btn bg-transparent border border-success capitalize font-semibold text-xl hover:text-white hover:btn-success "> <Link to='/'>Go Home </Link></button>
                        <button onClick={() => handleSelect(findDetails)} className="btn bg-transparent border border-success capitalize font-semibold text-xl hover:text-white hover:btn-success">Add to Cart <FaCartPlus className="text-2xl"></FaCartPlus></button>
                     </div>
                 </div>
