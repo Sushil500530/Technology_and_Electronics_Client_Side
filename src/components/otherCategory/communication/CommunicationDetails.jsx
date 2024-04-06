@@ -1,4 +1,4 @@
-import { Link, useLoaderData, useNavigate } from "react-router-dom";
+import { Link, Navigate, useLoaderData, useNavigate } from "react-router-dom";
 import Footer from "../../Footer/Footer";
 import Navbar from "../../../Root/Header/Navbar";
 import { FaCartPlus } from "react-icons/fa";
@@ -30,7 +30,13 @@ const CommunicationDetails = () => {
                     return navigate('/')
                 }
             })
+    };
+
+    const handleBack = () => {
+        navigate(-1);
     }
+
+
     return (
         <div>
             <div className="bg-gray-100">
@@ -57,8 +63,7 @@ const CommunicationDetails = () => {
                             <input type="radio" name="rating-2" className="mask mask-star-2 bg-orange-400" checked />
                         </div>
                         <div className="mt-5 w-full md:w-auto lg:w-auto space-x-5 flex flex-col md:flex-row lg:flex-row items-center justify-center gap-5">
-
-                            <button className="btn w-full md:w-auto lg:w-auto bg-transparent border border-success capitalize font-semibold text-xl hover:text-white hover:btn-success"> <Link to='/'>Go Home </Link></button>
+                            <button onClick={handleBack} className="btn w-full md:w-auto lg:w-auto bg-transparent border border-success capitalize font-semibold text-xl hover:text-white hover:btn-success">Go Back</button>
                             <button onClick={() => handleSelect(findData)} className="btn w-full md:w-auto lg:w-auto bg-transparent border border-success capitalize font-semibold text-xl hover:text-white hover:btn-success tw-space-x-reverse-0">Add to Cart <FaCartPlus className="text-2xl"></FaCartPlus></button>
                         </div>
                     </div>

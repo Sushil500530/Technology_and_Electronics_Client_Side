@@ -10,10 +10,9 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 
-
-
 // import required modules
 import { Autoplay, Pagination, Navigation } from 'swiper/modules';
+import { FaCartPlus } from "react-icons/fa";
 
 const CategoryByShow = () => {
     const data = useLoaderData();
@@ -24,6 +23,10 @@ const CategoryByShow = () => {
     }, [data])
 
     // console.log(sliderData);
+
+    const handleSelect = (id) => {
+        console.log(id);
+    }
     return (
         <div>
             <div className="bg-gray-100">
@@ -99,10 +102,7 @@ const CategoryByShow = () => {
                                             <input type="radio" name="rating-2" className="mask mask-star-2 bg-orange-400" checked />
                                         </div>
                                         <div className=" space-y-2">
-
                                             <h2 className="card-title capitalize">{element.title}</h2>
-
-
                                             <p>{element.description}</p>
                                             <div className="flex justify-around mb-3">
                                                 <h2 className="text-xl font-semibold">Category: {element.category}</h2>
@@ -111,14 +111,10 @@ const CategoryByShow = () => {
                                         </div>
                                         <div className="grid grid-cols-2 gap-5 items-center">
                                             <Link to={`/category/${element?._id}`}>
-                                                <div >
                                                     <button className="btn w-full btn-success">Details</button>
-                                                </div>
                                             </Link>
                                             <Link to={`/updateProduct/${element._id}`}>
-                                                <div >
-                                                    <button className="btn w-full btn-success">Update</button>
-                                                </div>
+                                                    <button onClick={() => handleSelect(element?._id)} className="btn w-full btn-success border-success capitalize hover:scale-100 hover:btn-success tw-space-x-reverse-0">Add to Cart <FaCartPlus className="text-2xl hover:scale-100"></FaCartPlus></button>
                                             </Link>
                                         </div>
                                     </div>
