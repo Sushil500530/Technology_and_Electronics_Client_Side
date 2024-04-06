@@ -4,12 +4,13 @@ import Navbar from "../../../Root/Header/Navbar";
 import Swal from "sweetalert2";
 import { IoStarSharp } from "react-icons/io5";
 import { FaCommentAlt } from "react-icons/fa";
-import { ToastContainer, toast } from "react-toastify";
+import {toast } from "react-toastify";
 
 
 const CategoryDetails = () => {
     const findItem = useLoaderData();
     const navigate = useNavigate();
+    // console.log(findItem);
     const handleSelect = (find) => {
         const findCart = {
             thumbnail: find?.thumbnail,
@@ -19,7 +20,7 @@ const CategoryDetails = () => {
             price: find?.price,
         }
 
-        fetch('http://localhost:5000/carts', {
+        fetch('http://localhost:5000/my-cart', {
             method: "POST",
             headers: {
                 'content-type': 'application/json'

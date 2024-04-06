@@ -57,7 +57,7 @@ const Router = createBrowserRouter([
             },
             {
                 path: '/gps/:id',
-                element: <PrivetRouter><GpsDetails></GpsDetails></PrivetRouter>,
+                element: <PrivetRouter><CategoryDetails /></PrivetRouter>,
                 loader: ({params}) => fetch(`http://localhost:5000/gps/${params.id}`)
             },
             {
