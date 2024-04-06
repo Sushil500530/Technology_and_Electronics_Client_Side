@@ -16,7 +16,7 @@ const CategoryDetails = () => {
             category: find?.category,
             price: find?.price,
         }
-        
+
         fetch('http://localhost:5000/carts', {
             method: "POST",
             headers: {
@@ -39,6 +39,10 @@ const CategoryDetails = () => {
         return navigate(`/technology/${findCart?.category}`)
     }
 
+    const handleBack = () => {
+        navigate(-1);
+    }
+
     return (
         <div>
             <div className="bg-gray-100">
@@ -47,6 +51,13 @@ const CategoryDetails = () => {
                 </div>
             </div>
             <div className="my-7 container mx-auto">
+                <div className="breadcrumbs mb-7 text-lg">
+                    <ul>
+                        <li><Link to="/">Home</Link></li>
+                        <li><Link to={`/technology/${findItem[0]?.category}`}>{findItem[0]?.category}</Link></li>
+                        <li>{findItem[0]?.title}</li>
+                    </ul>
+                </div>
                 <div className="flex flex-col md:flex-col lg:flex-row justify-between">
                     <div className="w-full lg:h-[480px] lg:w-[50%]">
                         <img className="h-[480px] w-full" src={findItem[0]?.thumbnail} alt="meal-photo" />
@@ -65,9 +76,7 @@ const CategoryDetails = () => {
                             <input type="radio" name="rating-2" className="mask mask-star-2 bg-orange-400" checked />
                         </div>
                         <div className="mt-5 w-full md:w-auto lg:w-auto space-x-5 flex flex-col md:flex-row lg:flex-row items-center justify-center gap-5">
-                            <Link to='/'>
-                                <button className="btn w-full md:w-auto lg:w-auto bg-transparent border border-success capitalize font-semibold text-xl hover:text-white hover:btn-success">Go Home </button>
-                            </Link>
+                            <button onClick={handleBack} className="btn w-full md:w-auto lg:w-auto bg-transparent border border-success capitalize font-semibold text-xl hover:text-white hover:btn-success">Go Back</button>
                             <button onClick={() => handleSelect(findItem[0])} className="btn w-full md:w-auto lg:w-auto bg-transparent border border-success capitalize font-semibold text-xl hover:text-white hover:btn-success tw-space-x-reverse-0"> Add To Cart <FaCartPlus className="text-2xl"></FaCartPlus></button>
 
                         </div>
