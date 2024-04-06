@@ -2,7 +2,6 @@ import { Link } from "react-router-dom";
 import Navbar from "../../Root/Header/Navbar";
 import { FiEdit2 } from 'react-icons/fi';
 import { AiFillDelete } from 'react-icons/ai';
-import Footer from "../Footer/Footer";
 import Swal from "sweetalert2";
 import { useEffect, useState } from "react";
 import Loader from "../Loader";
@@ -27,7 +26,6 @@ const MyCart = () => {
     }
 
     const handleDelete = (id) => {
-        console.log('delete id is', id);
         Swal.fire({
             title: 'Are you sure?',
             text: "You won't be able to revert this!",
@@ -99,11 +97,6 @@ const MyCart = () => {
                             </div>
                         </div>)
                     }
-                </div>
-            </div>
-            <div>
-                <div className="bg-gray-500 lg:p-0 pb-10">
-                    <Footer />
                 </div>
             </div>
         </div>

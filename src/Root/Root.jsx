@@ -1,5 +1,4 @@
 import Navbar from "./Header/Navbar";
-import Footer from "../components/Footer/Footer";
 import Category from "../components/Category/SingleCategory/Category";
 import Communication from "../components/otherCategory/communication/Communication";
 import Gps from "../components/otherCategory/GPS/Gps";
@@ -30,10 +29,6 @@ const Root = () => {
             </div>
             <Communication></Communication>
             <Gps></Gps>
-            {/* footer  */}
-            <div className="bg-gray-800 lg:p-0 pb-10">
-                <Footer />
-            </div>
         </div>
     );
 };

@@ -1,6 +1,5 @@
 import { FaCartPlus } from "react-icons/fa";
 import { Link, useLoaderData, useNavigate } from "react-router-dom";
-import Footer from "../../Footer/Footer";
 import Navbar from "../../../Root/Header/Navbar";
 import Swal from "sweetalert2";
 
@@ -17,7 +16,7 @@ const CategoryDetails = () => {
             category: find?.category,
             price: find?.price,
         }
-        console.log(findCart);
+        
         fetch('http://localhost:5000/carts', {
             method: "POST",
             headers: {
@@ -74,9 +73,6 @@ const CategoryDetails = () => {
                         </div>
                     </div>
                 </div>
-            </div>
-            <div className="bg-gray-500 lg:p-0 pb-10">
-                <Footer />
             </div>
         </div>
     );

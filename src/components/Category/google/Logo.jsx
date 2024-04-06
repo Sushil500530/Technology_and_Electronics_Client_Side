@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import Navbar from "../../../Root/Header/Navbar";
-import Footer from "../../Footer/Footer";
 import { BsFillArrowRightCircleFill } from "react-icons/bs";
 import Loader from "../../Loader";
 
@@ -46,9 +45,6 @@ const Logo = () => {
                         </div>
                     )
                 }
-            </div>
-            <div className="bg-gray-500 lg:p-0 pb-10">
-                <Footer />
             </div>
         </div>
     );

@@ -1,5 +1,4 @@
 import { Link, useLoaderData } from "react-router-dom";
-import Footer from "../../Footer/Footer";
 import Navbar from "../../../Root/Header/Navbar";
 import { useEffect, useState } from "react";
 // Import Swiper React components
@@ -13,10 +12,12 @@ import 'swiper/css/navigation';
 // import required modules
 import { Autoplay, Pagination, Navigation } from 'swiper/modules';
 import { FaCartPlus } from "react-icons/fa";
+import Swal from "sweetalert2";
 
 const CategoryByShow = () => {
     const data = useLoaderData();
     const [sliderData, setSliderData] = useState([]);
+
     useEffect(() => {
         const findData = data.find(item => item?.slider);
         setSliderData(findData?.slider)
@@ -26,7 +27,36 @@ const CategoryByShow = () => {
 
     const handleSelect = (id) => {
         console.log(id);
+        const findData = data?.filter(item => item?._id === id);
+     
+            const cartObj = {
+                title: findData[0]?.title,
+                description: findData[0]?.description,
+                thumbnail: findData[0]?.thumbnail,
+                category: findData[0]?.category,
+                price: findData[0]?.price,
+            }
+            
+            fetch('http://localhost:5000/my-cart', {
+                method: "POST",
+                headers: {
+                    'content-type': 'application/json'
+                },
+                body: JSON.stringify(cartObj)
+            })
+                .then(res => res.json())
+                .then(data => {
+                    if (data.insertedId) {
+                        Swal.fire({
+                            title: 'Success!',
+                            text: 'Added Successfully!',
+                            icon: 'success',
+                            confirmButtonText: 'Ok'
+                        })
+                    }
+                })
     }
+    
     return (
         <div>
             <div className="bg-gray-100">
@@ -111,11 +141,9 @@ const CategoryByShow = () => {
                                         </div>
                                         <div className="grid grid-cols-2 gap-5 items-center">
                                             <Link to={`/category/${element?._id}`}>
-                                                    <button className="btn w-full btn-success">Details</button>
+                                                <button className="btn w-full btn-success">Details</button>
                                             </Link>
-                                            <Link to={`/updateProduct/${element._id}`}>
-                                                    <button onClick={() => handleSelect(element?._id)} className="btn w-full btn-success border-success capitalize hover:scale-100 hover:btn-success tw-space-x-reverse-0">Add to Cart <FaCartPlus className="text-2xl hover:scale-100"></FaCartPlus></button>
-                                            </Link>
+                                            <button onClick={() => handleSelect(element?._id)} className="btn w-full btn-success border-success capitalize hover:scale-100 hover:btn-success tw-space-x-reverse-0">Add to Cart <FaCartPlus className="text-2xl hover:scale-100"></FaCartPlus></button>
                                         </div>
                                     </div>
                                 </div>
@@ -123,9 +151,6 @@ const CategoryByShow = () => {
                         )
                     }
                 </div>
-            </div>
-            <div className="bg-gray-500 lg:p-0 pb-10">
-                <Footer />
             </div>
         </div>
     );

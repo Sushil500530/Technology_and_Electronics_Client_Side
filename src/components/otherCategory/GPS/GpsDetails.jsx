@@ -1,5 +1,4 @@
-import { Link, useLoaderData, useNavigate } from "react-router-dom";
-import Footer from "../../Footer/Footer";
+import { useLoaderData, useNavigate } from "react-router-dom";
 import Navbar from "../../../Root/Header/Navbar";
 import { FaCartPlus } from "react-icons/fa";
 import Swal from "sweetalert2";
@@ -10,17 +9,23 @@ const GpsDetails = () => {
     const navigate = useNavigate();
 
     const handleSelect = (obj) => {
-        console.log(obj);
-        fetch('http://localhost:5000/carts', {
+        const cartObj = {
+            title: obj?.title,
+            description: obj?.description,
+            thumbnail: obj?.thumbnail,
+            category: obj?.category,
+            price: obj?.price,
+        }
+
+        fetch('http://localhost:5000/my-cart', {
             method: "POST",
             headers: {
                 'content-type': 'application/json'
             },
-            body: JSON.stringify(obj)
+            body: JSON.stringify(cartObj)
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data);
                 if (data.insertedId) {
                     Swal.fire({
                         title: 'Success!',
@@ -31,7 +36,7 @@ const GpsDetails = () => {
                     return navigate('/')
                 }
             })
-    }
+    };
     const handleBack = () => {
         navigate(-1);
     }
@@ -67,9 +72,6 @@ const GpsDetails = () => {
                         </div>
                     </div>
                 </div>
-            </div>
-            <div className="bg-gray-500 lg:p-0 pb-10">
-                <Footer />
             </div>
         </div>
     );
