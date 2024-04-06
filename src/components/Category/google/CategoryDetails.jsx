@@ -42,6 +42,12 @@ const CategoryDetails = () => {
     }
     const handleSubmit=(e) => {
         e.preventDefault();
+        const form = e.target;
+        const message = form.message.value;
+        if(!message){
+            return toast.error('something went wrong!')
+        }
+        form.reset();
         toast.error('something went wrong!')
     }
 
