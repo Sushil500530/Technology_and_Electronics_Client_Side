@@ -3,7 +3,7 @@ import Navbar from "../../Root/Header/Navbar";
 import { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContex } from "../../provider/AuthProvider";
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { updateProfile } from "firebase/auth";
 
@@ -86,7 +86,6 @@ const Resister = () => {
                         <button className="btn bg-success text-white hover:text-black text-[18px] w-full capitalize font-semibold">Resister</button>
                         <h2 className="font-bold text-center">Already Have an Account? <Link to='/login' className="text-blue-600 hover:underline ">Please Login</Link></h2>
                     </form>
-                    <ToastContainer />
                 </div>
             </div>
         </div>

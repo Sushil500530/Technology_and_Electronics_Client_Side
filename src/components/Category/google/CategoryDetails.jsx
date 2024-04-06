@@ -2,7 +2,9 @@ import { FaCartPlus } from "react-icons/fa";
 import { Link, useLoaderData, useNavigate } from "react-router-dom";
 import Navbar from "../../../Root/Header/Navbar";
 import Swal from "sweetalert2";
-
+import { IoStarSharp } from "react-icons/io5";
+import { FaCommentAlt } from "react-icons/fa";
+import { ToastContainer, toast } from "react-toastify";
 
 
 const CategoryDetails = () => {
@@ -38,6 +40,10 @@ const CategoryDetails = () => {
             })
         return navigate(`/technology/${findCart?.category}`)
     }
+    const handleSubmit=(e) => {
+        e.preventDefault();
+        toast.error('something went wrong!')
+    }
 
     const handleBack = () => {
         navigate(-1);
@@ -58,7 +64,7 @@ const CategoryDetails = () => {
                         <li>{findItem[0]?.title}</li>
                     </ul>
                 </div>
-                <div className="flex flex-col md:flex-col lg:flex-row justify-between">
+                <div className="flex flex-col md:flex-col lg:flex-row justify-start gap-14">
                     <div className="w-full lg:h-[480px] lg:w-[50%]">
                         <img className="h-[480px] w-full" src={findItem[0]?.thumbnail} alt="meal-photo" />
                     </div>
@@ -78,9 +84,57 @@ const CategoryDetails = () => {
                         <div className="mt-5 w-full md:w-auto lg:w-auto space-x-5 flex flex-col md:flex-row lg:flex-row items-center justify-center gap-5">
                             <button onClick={handleBack} className="btn w-full md:w-auto lg:w-auto bg-transparent border border-success capitalize font-semibold text-xl hover:text-white hover:btn-success">Go Back</button>
                             <button onClick={() => handleSelect(findItem[0])} className="btn w-full md:w-auto lg:w-auto bg-transparent border border-success capitalize font-semibold text-xl hover:text-white hover:btn-success tw-space-x-reverse-0"> Add To Cart <FaCartPlus className="text-2xl"></FaCartPlus></button>
-
                         </div>
                     </div>
+                </div>
+                <div className="mt-10 w-full flex items-start justify-start gap-20">
+                    <div className="w-full lg:w-1/2">
+                        <h1 className="text-xl font-bold flex mb-3">Reviews(<IoStarSharp className="text-amber-600" />)</h1>
+                        <p className="text-gray-600">"Discover the pinnacle of innovation with our expertly curated collection featuring top brands like Samsung, Apple, Sony, Google, and Intel. From sleek smartphones to immersive entertainment systems and powerful computing solutions, each product embodies excellence in design and performance. Stay ahead of the curve and elevate your tech experience with our carefully selected lineup of industry leaders."</p>
+                    </div>
+                    <div className="w-full lg:w-1/3">
+                        <h1 className="text-xl font-bold flex mb-3">Comment(<FaCommentAlt className="mx-1 text-green-800" />)</h1>
+                        <div className="chat chat-start">
+                            <div className="chat-image avatar">
+                                <div className="w-10 rounded-full">
+                                    <img alt="Tailwind CSS chat bubble component" src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
+                                </div>
+                            </div>
+                            <div className="chat-bubble">It was said that you would, destroy the Sith, not join them.</div>
+                        </div>
+                        <div className="chat chat-start">
+                            <div className="chat-image avatar">
+                                <div className="w-10 rounded-full">
+                                    <img alt="Tailwind CSS chat bubble component" src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
+                                </div>
+                            </div>
+                            <div className="chat-bubble">It was you who would bring balance to the Force</div>
+                        </div>
+                        <div className="chat chat-start">
+                            <div className="chat-image avatar">
+                                <div className="w-10 rounded-full">
+                                    <img alt="Tailwind CSS chat bubble component" src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
+                                </div>
+                            </div>
+                            <div className="chat-bubble">Not leave it in Darkness</div>
+                        </div>
+                        <form onSubmit={handleSubmit} className="mt-5">
+                            <textarea name="message" id="" cols="30" rows="5" placeholder="Comment Here....." className="w-full border p-3 bg-gray-100"></textarea>
+                            <div className="card-actions justify-end">
+                                <button className="btn btn-success capitalize text-lg">Submit</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+
+                <div className="mt-20">
+                    <h1>About Our Industry and Products</h1>
+                    <p>Welcome to our comprehensive Technology and Electronics category, where innovation meets excellence with leading brands including Samsung, Apple, Sony, Google, and Intel. Dive into the forefront of technological advancement with Samsung's groundbreaking lineup spanning smartphones, tablets, home appliances, and wearables, all designed with sleek aesthetics and powerful performance. Explore Apple's iconic range of devices, from iPhones and iPads to MacBooks and Apple Watches, renowned for their seamless integration, industry-leading performance, and intuitive user experience.
+
+                        Immerse yourself in Sony's world of audiovisual excellence, featuring Bravia TVs, PlayStation consoles, Xperia smartphones, and Alpha cameras, setting the standard for superior picture and sound quality, immersive gaming experiences, and advanced camera technology. Simplify and enrich your digital life with Google's innovative products and services, including Pixel smartphones, Nest smart home devices, Chromebooks, and Google Home speakers, offering intelligent AI-powered features, seamless integration with services, and privacy-focused design.
+
+                        Powering the future of computing, Intel leads with advanced processors and semiconductor technology. Explore Core processors, Xeon processors, SSDs, and IoT solutions known for high-performance computing capabilities, energy efficiency, and reliability. Whether you're seeking the latest smartphone, cutting-edge entertainment system, or powerful computing solutions, our curated selection ensures you'll find the perfect blend of innovation and quality to suit your needs. Stay ahead of the curve and explore the forefront of technology with our collection of leading brands in the world of electronics."</p>
                 </div>
             </div>
         </div>
