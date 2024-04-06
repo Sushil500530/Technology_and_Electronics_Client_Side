@@ -2,14 +2,23 @@ import { useEffect, useState } from "react";
 import { BsFillArrowRightCircleFill } from 'react-icons/bs';
 import { GrAdd } from 'react-icons/gr';
 import { Link } from "react-router-dom";
+import Loader from "../../Loader";
 
 const Category = () => {
     const [category, setCategory] = useState([]);
+    const [isLoading,setIsLoading] = useState(false);
     useEffect(() => {
+        setIsLoading(true)
         fetch('http://localhost:5000/technology')
             .then(res => res.json())
-            .then(data => setCategory(data))
+            .then(data => {
+                setCategory(data)
+                setIsLoading(false)
+            })
     }, [])
+    if(isLoading){
+        return <Loader />
+    }
     return (
         <div className="container mx-auto my-12">
             <h1 className="text-4xl font-bold text-center">Technology and Electronics</h1>

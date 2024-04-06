@@ -2,19 +2,28 @@ import { useEffect, useState } from "react";
 import Navbar from "../../../Root/Header/Navbar";
 import Footer from "../../Footer/Footer";
 import { BsFillArrowRightCircleFill } from "react-icons/bs";
+import Loader from "../../Loader";
 
 
 
 const Logo = () => {
 
     const [image, setImage] = useState([]);
+    const [isLoading, setIsLoading] = useState(false);
 
     useEffect(() => {
+        setIsLoading(true)
         fetch('http://localhost:5000/gps')
             .then(res => res.json())
-            .then(data => setImage(data))
+            .then(data => {
+                setImage(data)
+                setIsLoading(false)
+            })
     }, [])
-    console.log(image);
+    if (isLoading) {
+        return <Loader />
+    }
+
     return (
         <div>
             <div className="bg-gray-100">

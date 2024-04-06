@@ -31,7 +31,7 @@ const Root = () => {
             <Communication></Communication>
             <Gps></Gps>
             {/* footer  */}
-            <div className="bg-gray-500 lg:p-0 pb-10">
+            <div className="bg-gray-800 lg:p-0 pb-10">
                 <Footer />
             </div>
         </div>

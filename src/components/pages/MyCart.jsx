@@ -5,17 +5,29 @@ import { AiFillDelete } from 'react-icons/ai';
 import Footer from "../Footer/Footer";
 import Swal from "sweetalert2";
 import { useEffect, useState } from "react";
+import Loader from "../Loader";
 
 
 const MyCart = () => {
     const [myCarts, setMyCarts] = useState([]);
-    useEffect(()=>{
+    const [isLoading, setIsLoading] = useState(false);
+
+    useEffect(() => {
+        setIsLoading(true)
         fetch('http://localhost:5000/carts')
-        .then(res=> res.json())
-        .then(data => setMyCarts(data))
-    },[])
-    const handleDelete = (_id) => {
-        // console.log('delete id is', _id);
+            .then(res => res.json())
+            .then(data => {
+                setMyCarts(data)
+                setIsLoading(false)
+            })
+    }, []);
+
+    if (isLoading) {
+        return <Loader />
+    }
+
+    const handleDelete = (id) => {
+        console.log('delete id is', id);
         Swal.fire({
             title: 'Are you sure?',
             text: "You won't be able to revert this!",
@@ -26,19 +38,18 @@ const MyCart = () => {
             confirmButtonText: 'Yes, delete it!'
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`http://localhost:5000/cart/${_id}`, {
+                fetch(`http://localhost:5000/cart-delete/${id}`, {
                     method: "DELETE"
                 })
                     .then(res => res.json())
                     .then(data => {
                         if (data.deletedCount > 0) {
-                            console.log(data);
                             Swal.fire(
                                 'Deleted!',
                                 'Your file has been deleted.',
                                 'success'
                             )
-                            const remaining = myCarts.filter(carts => carts._id !== _id);
+                            const remaining = myCarts.filter(carts => carts._id !== id);
                             setMyCarts(remaining)
                         }
                     })
@@ -87,7 +98,7 @@ const MyCart = () => {
                                 </div>
                             </div>
                         </div>)
-                    } 
+                    }
                 </div>
             </div>
             <div>
