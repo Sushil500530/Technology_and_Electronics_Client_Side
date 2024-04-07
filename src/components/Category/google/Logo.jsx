@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { BsFillArrowRightCircleFill } from "react-icons/bs";
 import Loader from "../../Loader";
+import Footer from "../../Footer/Footer";
 
 
 
@@ -23,7 +24,8 @@ const Logo = () => {
     }
 
     return (
-        <div className="grid grid-cols-1 md:grid-cols-2 p-5 lg:grid-cols-4 gap-5 container mx-auto">
+      <div>
+          <div className="grid grid-cols-1 md:grid-cols-2 p-5 lg:grid-cols-4 gap-5 container mx-auto">
             {
                 image.map(thumb =>
                     <div key={thumb.id} className=" bg-gray-50 my-5 cursor-pointer shodow overflow-hidden ">
@@ -39,6 +41,8 @@ const Logo = () => {
                 )
             }
         </div>
+        <Footer />
+      </div>
     );
 };
 
