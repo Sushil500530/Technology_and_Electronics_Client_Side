@@ -13,6 +13,7 @@ import PrivetRouter from './PrivetRouter';
 import CategoryByShow from '../components/Category/google/CategoryByShow';
 import UpdateMyCart from '../components/pages/UpdateMyCart';
 import CategoryDetails from '../components/Category/google/CategoryDetails';
+import TechnologiesDetails from '../components/shared/TechnologiesDetails';
 
 
 
@@ -50,7 +51,7 @@ const Router = createBrowserRouter([
             },
             {
                 path: '/communication/:id',
-                element: <PrivetRouter></PrivetRouter>,
+                element: <PrivetRouter><TechnologiesDetails /></PrivetRouter>,
                 loader: ({params}) => fetch(`http://localhost:5000/communication/${params.id}`)
             },
             {
