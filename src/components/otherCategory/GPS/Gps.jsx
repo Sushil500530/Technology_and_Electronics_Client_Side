@@ -18,13 +18,15 @@ const Gps = () => {
     // console.log(gpsElement);
     useEffect(() => {
         setIsLoading(true)
-        fetch('http://localhost:5000/gps')
+        fetch('https://projects-server-side.vercel.app/gps')
             .then(res => res.json())
             .then(data => {
                 setGpsElement(data)
                 setIsLoading(false);
             })
-    }, [])
+    }, []);
+console.log(gpsElement);
+
     return (
         <div className="container mx-auto my-12 p-5">
             <div className="w-[80%] space-y-4 mx-auto mb-8">
@@ -50,7 +52,7 @@ const Gps = () => {
                             <div key={gps._id} className=" bg-gray-50 my-5 cursor-pointer shodow overflow-hidden ">
                                 <SwiperSlide>
                                     <div className="relative rounded-md group h-[350px]">
-                                        <Link to={`/communication/${gps._id}`}>
+                                        <Link to={`/gps-data/${gps._id}`}>
                                             <img src={gps.thumbnail} className="w-full h-full rounded-md"></img>
                                             <div className="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center gap-2 opacity-0 group-hover:opacity-100 rounded-md transition">
                                                 <h2 className="text-white text-lg w-9 h-8 rounded-full flex items-center justify-center hover:bg-gray-800 transition ">
@@ -59,7 +61,7 @@ const Gps = () => {
                                             </div>
                                         </Link>
                                     </div>
-                                    <h3 className="text-2xl font-bold text-center mt-3 capitalize">{gps.name}</h3>
+                                    <h3 className="text-2xl font-bold text-center mt-3 capitalize">{gps.title}</h3>
                                 </SwiperSlide>
                             </div>
                         )

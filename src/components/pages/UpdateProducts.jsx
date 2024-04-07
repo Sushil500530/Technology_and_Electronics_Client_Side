@@ -18,7 +18,7 @@ const UpdateProducts = () => {
         const category = form.category.value;
         const thumbnail = form.image.value;
         const updatad = { title, price, description, category, thumbnail }
-        fetch(`http://localhost:5000/updated/${_id}`, {
+        fetch(`https://projects-server-side.vercel.app/updated/${_id}`, {
             method: "PUT",
             headers: {
                 'content-type': 'application/json'

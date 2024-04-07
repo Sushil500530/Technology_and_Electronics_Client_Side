@@ -15,12 +15,14 @@ import { Autoplay, Pagination, Navigation, FreeMode } from 'swiper/modules';
 const Communication = () => {
     const [communication, setCommunication] = useState([]);
     useEffect(() => {
-        fetch('http://localhost:5000/communications')
+        fetch('https://projects-server-side.vercel.app/communication')
             .then(res => res.json())
             .then(data => { setCommunication(data) })
-    }, [])
-    return (
+    }, []);
 
+
+
+    return (
         <div className="container mx-auto my-12">
             <div className="space-y-4 mb-8">
                 <h1 className="text-4xl font-bold text-center">Communication Service</h1>
@@ -46,7 +48,7 @@ const Communication = () => {
                             <div key={communi._id} className=" bg-gray-50 my-5 cursor-pointer shodow overflow-hidden ">
                                 <SwiperSlide>
                                     <div className="relative rounded-md group h-[350px]">
-                                        <Link to={`/communication/${communi._id}`}>
+                                        <Link to={`/communication-data/${communi._id}`}>
                                             <img src={communi.thumbnail} className="w-full h-full rounded-md"></img>
                                             <div className="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center gap-2 opacity-0 group-hover:opacity-100 rounded-md transition">
                                                 <h2 className="text-white text-lg w-9 h-8 rounded-full flex items-center justify-center hover:bg-gray-800 transition ">

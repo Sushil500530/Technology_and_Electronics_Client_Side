@@ -1,5 +1,4 @@
 import { useContext, useState } from "react";
-import Navbar from "../../Root/Header/Navbar";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
@@ -62,7 +61,6 @@ const Login = () => {
     return (
         <div className="bg-[#f6f8fa] text-black pb-12">
             <div className='container mx-auto'>
-                <Navbar></Navbar>
                 <div className=" w-full lg:w-[580px] mx-auto mt-12 bg-white pb-5">
                     <form onSubmit={handleLogin} className="space-y-8 p-5 border">
                         <h3 className="text-2xl font-semibold mb-10 mt-5 text-center">Please Login</h3>

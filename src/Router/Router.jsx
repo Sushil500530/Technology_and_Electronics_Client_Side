@@ -42,7 +42,7 @@ const Router = createBrowserRouter([
             },
             {
                 path: '/technology/:category',
-                loader: ({params}) => fetch(`http://localhost:5000/technology/${params.category}`),
+                loader: ({params}) => fetch(`https://projects-server-side.vercel.app/technology/${params.category}`),
                 element: <CategoryByShow></CategoryByShow>
             },
             {
@@ -50,29 +50,29 @@ const Router = createBrowserRouter([
                 element: <PrivetRouter><MyCart></MyCart></PrivetRouter>
             },
             {
-                path: '/communication/:id',
+                path: '/communication-data/:id',
                 element: <PrivetRouter><TechnologiesDetails /></PrivetRouter>,
-                loader: ({params}) => fetch(`http://localhost:5000/communication/${params.id}`)
+                loader: ({params}) => fetch(`https://projects-server-side.vercel.app/communication-data/${params.id}`)
             },
             {
-                path: '/gps/:id',
+                path: '/gps-data/:id',
                 element: <PrivetRouter><TechnologiesDetails /></PrivetRouter>,
-                loader: ({params}) => fetch(`http://localhost:5000/gps/${params.id}`)
+                loader: ({params}) => fetch(`https://projects-server-side.vercel.app/gps-data/${params.id}`)
             },
             {
                 path: '/updateProduct/:id',
-                loader: ({ params }) => fetch(`http://localhost:5000/category/${params.id}`),
+                loader: ({ params }) => fetch(`https://projects-server-side.vercel.app/category/${params.id}`),
                 element: <UpdateProducts></UpdateProducts>
             },
            
             {
                 path: '/category/:id',
-                loader: ({params}) => fetch(`http://localhost:5000/category/${params.id}`),
+                loader: ({params}) => fetch(`https://projects-server-side.vercel.app/category/${params.id}`),
                 element: <PrivetRouter><CategoryDetails /></PrivetRouter>
             },
              {
                 path: '/update-mycart/:id',
-                loader: ({ params }) => fetch(`http://localhost:5000/cart/${params.id}`),
+                loader: ({ params }) => fetch(`https://projects-server-side.vercel.app/cart/${params.id}`),
                 element: <UpdateMyCart />
             },
 

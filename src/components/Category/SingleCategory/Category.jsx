@@ -9,7 +9,7 @@ const Category = () => {
     const [isLoading,setIsLoading] = useState(false);
     useEffect(() => {
         setIsLoading(true)
-        fetch('http://localhost:5000/technology')
+        fetch('https://projects-server-side.vercel.app/technology')
             .then(res => res.json())
             .then(data => {
                 setCategory(data)

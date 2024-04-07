@@ -19,7 +19,7 @@ const CategoryDetails = () => {
             price: find?.price,
         }
 
-        fetch('http://localhost:5000/my-cart', {
+        fetch('https://projects-server-side.vercel.app/my-cart', {
             method: "POST",
             headers: {
                 'content-type': 'application/json'

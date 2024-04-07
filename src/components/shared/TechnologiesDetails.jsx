@@ -8,7 +8,6 @@ import Swal from 'sweetalert2';
 const TechnologiesDetails = () => {
     const findItem = useLoaderData();
     const navigate = useNavigate();
-    // console.log(findItem);
     const handleSelect = (find) => {
         const findCart = {
             thumbnail: find?.thumbnail,
@@ -18,7 +17,7 @@ const TechnologiesDetails = () => {
             price: find?.price,
         }
 
-        fetch('http://localhost:5000/my-cart', {
+        fetch('https://projects-server-side.vercel.app/my-cart', {
             method: "POST",
             headers: {
                 'content-type': 'application/json'

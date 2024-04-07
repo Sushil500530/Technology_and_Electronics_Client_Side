@@ -1,5 +1,4 @@
 import { Link, useLoaderData } from "react-router-dom";
-import Navbar from "../../../Root/Header/Navbar";
 import { useEffect, useState } from "react";
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -37,7 +36,7 @@ const CategoryByShow = () => {
                 price: findData[0]?.price,
             }
             
-            fetch('http://localhost:5000/my-cart', {
+            fetch('https://projects-server-side.vercel.app/my-cart', {
                 method: "POST",
                 headers: {
                     'content-type': 'application/json'
@@ -59,11 +58,6 @@ const CategoryByShow = () => {
     
     return (
         <div>
-            <div className="bg-gray-100">
-                <div className="container mx-auto">
-                    <Navbar></Navbar>
-                </div>
-            </div>
             {/* carosel here  */}
             <>
                 <Swiper spaceBetween={30} centeredSlides={true} autoplay={{ delay: 2500, disableOnInteraction: false, }}

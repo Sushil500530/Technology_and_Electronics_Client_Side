@@ -13,7 +13,7 @@ const MyCart = () => {
 
     useEffect(() => {
         setIsLoading(true)
-        fetch('http://localhost:5000/carts')
+        fetch('https://projects-server-side.vercel.app/carts')
             .then(res => res.json())
             .then(data => {
                 setMyCarts(data)
@@ -37,7 +37,7 @@ const MyCart = () => {
 
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`http://localhost:5000/cart-delete/${id}`, {
+                fetch(`https://projects-server-side.vercel.app/cart-delete/${id}`, {
                     method: "DELETE"
                 })
                     .then(res => res.json())
