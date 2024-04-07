@@ -1,14 +1,12 @@
 import { Outlet } from "react-router-dom";
-import Footer from "../../components/Footer/Footer";
+import Navbar from "../Header/Navbar";
 
 
 const MainLayout = () => {
     return (
         <div>
+            <Navbar />
             <Outlet></Outlet>
-            <div className="bg-gray-800 lg:p-0 pb-10">
-                <Footer />
-            </div>
         </div>
     );
 };

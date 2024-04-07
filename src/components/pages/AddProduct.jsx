@@ -1,5 +1,4 @@
 import Swal from "sweetalert2";
-import Navbar from "../../Root/Header/Navbar";
 
 
 const AddProduct = () => {
@@ -33,9 +32,8 @@ const AddProduct = () => {
         })
     }
     return (
-        <div className="container mx-auto">
-            <Navbar></Navbar>
-            <div className="w-full lg:h-screen h-[1200px] bg-[#f6f8fa] p-5 lg:px-12">
+        <div className="container mx-auto my-12">
+            <div className="w-full h-auto bg-[#f6f8fa] p-5 lg:px-12">
                 <div className="space-y-5 pb-5">
                     <h1 className="text-3xl font-bold text-center pt-5 lg:pt-12">
                         Add New Product </h1>
