@@ -5,8 +5,6 @@ import MainLayout from '../Root/mainLayout/MainLayout';
 import Root from '../Root/Root';
 import Resister from '../components/Resister/Resister';
 import AddProduct from '../components/pages/AddProduct';
-import CommunicationDetails from '../components/otherCategory/communication/CommunicationDetails';
-import GpsDetails from '../components/otherCategory/GPS/GpsDetails';
 import MyCart from '../components/pages/MyCart';
 import UpdateProducts from '../components/pages/UpdateProducts';
 import CreateAddProduct from '../components/pages/CreateAddProduct';
@@ -52,7 +50,7 @@ const Router = createBrowserRouter([
             },
             {
                 path: '/communication/:id',
-                element: <PrivetRouter><CommunicationDetails></CommunicationDetails></PrivetRouter>,
+                element: <PrivetRouter></PrivetRouter>,
                 loader: ({params}) => fetch(`http://localhost:5000/communication/${params.id}`)
             },
             {
