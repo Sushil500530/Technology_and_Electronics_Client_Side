@@ -1,9 +1,9 @@
 import { FaCartPlus, FaCommentAlt } from "react-icons/fa";
 import { IoStarSharp } from "react-icons/io5";
-import { Link,useLoaderData,useNavigate } from "react-router-dom";
+import { Link, useLoaderData, useNavigate } from "react-router-dom";
 import Navbar from "../../Root/Header/Navbar";
 import { toast } from 'react-toastify';
-import { Swal } from 'sweetalert2';
+import Swal from 'sweetalert2';
 
 
 const TechnologiesDetails = () => {
@@ -38,7 +38,6 @@ const TechnologiesDetails = () => {
                 }
 
             })
-        return navigate(`/technology/${findCart?.category}`)
     }
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -66,7 +65,7 @@ const TechnologiesDetails = () => {
                 <div className="breadcrumbs mb-7 text-lg">
                     <ul>
                         <li><Link to="/">Home</Link></li>
-                        <li><button onClick={()=>navigate(-1)}>{findItem?.category}</button></li>
+                        <li><Link to={'/'}>{findItem?.category}</Link></li>
                         <li>{findItem?.title}</li>
                     </ul>
                 </div>
@@ -89,7 +88,7 @@ const TechnologiesDetails = () => {
                         </div>
                         <div className="mt-5 w-full md:w-auto lg:w-auto flex flex-col md:flex-row lg:flex-row items-center justify-center gap-5">
                             <button onClick={handleBack} className="btn w-full md:w-auto lg:w-auto bg-transparent border border-success capitalize font-semibold text-xl hover:text-white hover:btn-success">Go Back</button>
-                            <button onClick={() => handleSelect(findItem)} className="btn w-full md:w-auto lg:w-auto bg-transparent border border-success capitalize font-semibold text-xl hover:text-white hover:btn-success"> Add To Collection <FaCartPlus className="text-2xl"></FaCartPlus></button>
+                            <button onClick={() => handleSelect(findItem)} className="btn w-full md:w-auto lg:w-auto bg-transparent border border-success capitalize font-semibold text-xl hover:text-white hover:btn-success"> Add To Collect <FaCartPlus className="text-2xl"></FaCartPlus></button>
                         </div>
                     </div>
                 </div>

@@ -90,7 +90,7 @@ const CategoryDetails = () => {
                         </div>
                         <div className="mt-5 w-full md:w-auto lg:w-auto flex flex-col md:flex-row lg:flex-row items-center justify-center gap-5">
                             <button onClick={handleBack} className="btn w-full md:w-auto lg:w-auto bg-transparent border border-success capitalize font-semibold text-xl hover:text-white hover:btn-success">Go Back</button>
-                            <button onClick={() => handleSelect(findItem[0])} className="btn w-full md:w-auto lg:w-auto bg-transparent border border-success capitalize font-semibold text-xl hover:text-white hover:btn-success"> Add To Cart <FaCartPlus className="text-2xl"></FaCartPlus></button>
+                            <button onClick={() => handleSelect(findItem[0])} className="btn w-full md:w-auto lg:w-auto bg-transparent border border-success capitalize font-semibold text-xl hover:text-white hover:btn-success"> Add To Collect <FaCartPlus className="text-2xl"></FaCartPlus></button>
                         </div>
                     </div>
                 </div>
